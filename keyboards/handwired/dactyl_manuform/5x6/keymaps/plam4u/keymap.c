@@ -7,19 +7,23 @@
 #define RAISE MO(_RAISE)
 #define LOWER MO(_LOWER)
 
-#define CTL_Z LCTL_T(KC_Z)
+#define CTL OSM(MOD_LCTL)
+#define SHIFT OSM(MOD_LSFT)
+#define ALT OSM(MOD_LALT)
+#define CMD OSM(MOD_LGUI)
+
+#define CTL_Z CTL_T(KC_Z)
 #define CTL_SL RCTL_T(KC_SLSH)
-#define CMD KC_LGUI
 #define CM_LBRC SGUI(KC_LBRC)
 #define CM_RBRC SGUI(KC_RBRC)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [0] = LAYOUT_5x6(
         KC_GRV  ,KC_1   ,KC_2   ,KC_3   ,KC_4   ,KC_5   ,                           KC_6    ,KC_7   ,KC_8   ,KC_9   ,KC_0   ,RESET  ,
-        KC_ESC  ,KC_Q   ,KC_W   ,KC_E   ,KC_R   ,KC_T   ,                           KC_Y    ,KC_U   ,KC_I   ,KC_O   ,KC_P   ,KC_MINS,
-        KC_LSFT ,KC_A   ,KC_S   ,KC_D   ,KC_F   ,KC_G   ,                           KC_H    ,KC_J   ,KC_K   ,KC_L   ,KC_SCLN,KC_QUOT,
-        KC_LCTL ,CTL_Z  ,KC_X   ,KC_C   ,KC_V   ,KC_B   ,                           KC_N    ,KC_M   ,KC_COMM,KC_DOT ,CTL_SL ,KC_BSLS,
-                    KC_LALT, KC_LGUI,                                                           KC_LGUI, KC_LALT, 
+        KC_TAB  ,KC_Q   ,KC_W   ,KC_E   ,KC_R   ,KC_T   ,                           KC_Y    ,KC_U   ,KC_I   ,KC_O   ,KC_P   ,KC_MINS,
+        KC_ESC  ,KC_A   ,KC_S   ,KC_D   ,KC_F   ,KC_G   ,                           KC_H    ,KC_J   ,KC_K   ,KC_L   ,KC_SCLN,KC_QUOT,
+        SHIFT   ,CTL_Z  ,KC_X   ,KC_C   ,KC_V   ,KC_B   ,                           KC_N    ,KC_M   ,KC_COMM,KC_DOT ,CTL_SL ,KC_BSLS,
+                        ALT, CMD,                                                            KC_LGUI, KC_LALT, 
                                     MO(1), KC_SPC,                                  KC_ENT, MO(2), 
                                         KC_BSPC, KC_TAB,                        KC_BSPC, KC_ESC, 
                                         MEH_T(KC_F17), ALL_T(KC_F16),           KC_GRV, MO(_RAISE)
