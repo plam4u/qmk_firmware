@@ -10,8 +10,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ├───────┼───────┤  S/⇧  │   D   │   F   │   G   │ │   H   │   J   │   K   │   L   ├───────┼──────┤
  * │  ESC  │  A/◆  ├───────┼───────┼───────┼───────┤ ├───────┼───────┼───────┼───────┤HOME_SC│ ' "  │
  * ├───────┼───────┤   X   │   C   │   V   │   B   │ │   N   │   M   │  , <  │  . >  ├───────┼──────┤
- * │1-SHOT⇧│ CTL_Z ├───────┼───────┼───────┴───────┘ └───────┴───────┼───────┼───────┤CTL_SL │ \ |  │
- * └───────┴───────┤OS_LALT│OS_LCMD│                                 │LGUI ◆ │LALT ⎇ ├───────┴──────┘
+ * │       │ CTL_Z ├───────┼───────┼───────┴───────┘ └───────┴───────┼───────┼───────┤CTL_SL │ \ |  │
+ * └───────┴───────┤       │       │                                 │       │       ├───────┴──────┘
  *                 └───────┴───────┘                                 └───────┴───────┘
  *                                 ┏━━━━━━━┳━━━━━━━┓ ┏━━━━━━━┳━━━━━━━┓
  *                                 ┃NUM_TAB┃  SPC  ┃ ┃ BSPC  ┃NAV_ENT┃
@@ -24,8 +24,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_GRV  ,KC_1   ,KC_2   ,KC_3   ,KC_4   ,KC_5   ,                           KC_6    ,KC_7   ,KC_8   ,KC_9   ,KC_0     ,KC_EQL ,
         KC_TAB  ,KC_Q   ,KC_W   ,KC_E   ,KC_R   ,KC_T   ,                           KC_Y    ,KC_U   ,KC_I   ,KC_O   ,KC_P     ,KC_MINS,
         KC_ESC  ,HOME_A ,HOME_S ,HOME_D ,HOME_F ,KC_G   ,                           KC_H    ,HOME_J ,HOME_K ,HOME_L ,HOME_SCLN,KC_QUOT,
-        OS_LSFT ,CTL_Z  ,KC_X   ,KC_C   ,KC_V   ,KC_B   ,                           KC_N    ,KC_M   ,KC_COMM,KC_DOT ,CTL_SL   ,KC_BSLS,
-                        OS_LALT ,OS_LCMD,                                                       KC_LGUI, KC_LALT, 
+        _______ ,CTL_Z  ,KC_X   ,KC_C   ,KC_V   ,KC_B   ,                           KC_N    ,KC_M   ,KC_COMM,KC_DOT ,CTL_SL   ,KC_BSLS,
+                        _______ ,_______,                                                       _______, _______, 
                                         NUM_TAB, KC_SPC,                        KC_BSPC, NAV_ENT, 
                                         _______, OS_LSFT,                       OS_RSFT, _______, 
                                         SPACE_L, SPACE_R,                       _______, _______
