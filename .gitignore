@@ -86,3 +86,5 @@ __pycache__
 
 # Allow to exist but don't include it in the repo
 user_song_list.h
+
+keyboards/handwired/dactyl_manuform/5x6/keymaps/plam4u/keymap.c.bac
