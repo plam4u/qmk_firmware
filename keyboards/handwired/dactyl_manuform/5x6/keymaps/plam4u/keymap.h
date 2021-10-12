@@ -14,6 +14,10 @@
 #define HOME_L LALT_T(KC_L)
 #define HOME_SCLN RCTL_T(KC_SCLN)
 
+#define COPY LCMD(KC_C)
+#define PASTE LCMD(KC_V)
+#define PBRD LCMD(LSFT(KC_C))
+
 #define CTL OSM(MOD_LCTL)
 #define SHIFT OSM(MOD_LSFT)
 #define ALT OSM(MOD_LALT)
