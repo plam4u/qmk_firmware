@@ -20,8 +20,8 @@ enum layer_names {
 };
 
 // Layer keys
-#define NUM_TAB LT(_NUMPAD, KC_TAB)
-#define NAV_ENT LT(_SYM_NAV, KC_ENT)
+#define NUM_ESC LT(_NUMPAD, KC_ESC)
+#define NAV_BSPC LT(_SYM_NAV, KC_BSPC)
 #define SYM_NAV MO(_SYM_NAV)
 #define ADJUST MO(_ADJUST)
 
