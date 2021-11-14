@@ -58,6 +58,7 @@ enum layer_names {
 #define PBRD LSG(KC_C)
 #define UNDO LCMD(KC_Z)
 #define REDO LSG(KC_Z)
+#define ALFRED G(KC_SPC)
 
 // One Shot Modifiers
 #define OS_LCTL OSM(MOD_LCTL)
