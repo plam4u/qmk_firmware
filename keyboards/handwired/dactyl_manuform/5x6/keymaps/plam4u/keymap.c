@@ -27,7 +27,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         OS_LSFT ,CTL_Z  ,KC_X   ,KC_C   ,KC_V   ,KC_B   ,                           KC_N    ,KC_M   ,KC_COMM,KC_DOT ,CTL_SL   ,KC_BSLS,
                         OS_LALT ,OS_LCMD,                                                       OS_RCMD, OS_RALT, 
                                         NUM_ESC, LSFT_T(KC_SPC),                RSFT_T(KC_ENT),NAV_BSPC, 
-                                        KC_MEH , KC_TAB ,                        KC_MEH , KC_HYPR, 
+                                        KC_MEH , KC_TAB ,                       KC_MEH , KC_HYPR, 
                                         SPACE_L, SPACE_R,                       _______, _______
     ),
 
@@ -55,7 +55,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         DM_PLY1 ,G(KC_A),G(KC_S),_______,_______,KC_AMPR,                            KC_MINS , KC_P4 , KC_P5 , KC_P6 ,KC_COLN,DM_REC1,
         REDO    ,  UNDO , PBRD  , COPY  , PASTE ,KC_MINS,                            KC_EQL  , KC_P1 , KC_P2 , KC_P3 ,KC_SLSH,DM_RSTP,
                     _______, _______,                                                           _______, _______,
-                                    _______, _______ ,                               KC_DOT, KC_P0, 
+                                        _______, _______,                       KC_DOT , KC_P0, 
                                         _______, _______,                       _______, _______, 
                                         _______, _______,                       RESET  , _______
     ),
@@ -84,7 +84,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______ ,KC_AT  ,KC_DLR ,KC_LPRN,KC_RPRN,KC_AMPR,                           KC_LEFT ,KC_DOWN,KC_UP  ,KC_RGHT ,_______,KC_VOLU,
         _______ ,KC_HASH,KC_ASTR,KC_LBRC,KC_RBRC,KC_MINS,                           KC_EQL  ,KC_BSPC,KC_ENT ,KC_DEL  ,_______,KC_VOLD,
                     _______, _______,                                                           _______, _______, 
-                                     KC_UNDS, KC_DLR ,                               _______, _______, 
+                                        KC_UNDS, KC_DLR ,                       _______, _______, 
                                         _______, KC_GRV ,                       _______, _______, 
                                         _______, _______,                       _______, _______
     )
