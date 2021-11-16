@@ -87,7 +87,37 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                             KC_UNDS, KC_DLR ,                    _______, _______, 
                                             _______, KC_GRV ,                    _______, _______, 
                                             _______, _______,                    _______, _______
+    ),
+
+    [_ADJUST] = LAYOUT_5x6(
+        KC_F12  ,KC_F1  ,KC_F2  ,KC_F3  ,KC_F4  ,KC_F5  ,                           KC_F6   ,KC_F7  ,KC_F8  ,KC_F9   ,KC_F10 ,KC_F11 ,
+        _______ ,KC_PERC,KC_CIRC,KC_LCBR,KC_RCBR,KC_PIPE,                           CM_LBRC ,KC_MPLY,KC_MUTE,CM_RBRC ,_______,KC_MUTE,
+        _______ ,KC_AT  ,KC_DLR ,KC_LPRN,KC_RPRN,KC_AMPR,                           KC_LEFT ,KC_DOWN,KC_UP  ,KC_RGHT ,_______,KC_VOLU,
+        _______ ,KC_HASH,KC_ASTR,KC_LBRC,KC_RBRC,KC_MINS,                           KC_EQL  ,KC_BSPC,KC_ENT ,KC_DEL  ,_______,KC_VOLD,
+                         _______,_______,                                                            _______, _______, 
+                                            KC_UNDS, KC_DLR ,                    _______, _______, 
+                                            _______, KC_GRV ,                    _______, _______, 
+                                            _______, _______,                    _______, _______
     )
+};
+
+enum combos {
+  AB_ESC,
+  JK_TAB,
+  QW_SFT,
+  DF_LAYER,
+};
+
+const uint16_t PROGMEM ab_combo[] = {KC_A, KC_B, COMBO_END};
+const uint16_t PROGMEM jk_combo[] = {KC_J, KC_K, COMBO_END};
+const uint16_t PROGMEM qw_combo[] = {KC_Q, KC_W, COMBO_END};
+const uint16_t PROGMEM df_combo[] = {KC_D, KC_F, COMBO_END};
+
+combo_t key_combos[COMBO_COUNT] = {
+  [AB_ESC] = COMBO(ab_combo, KC_ESC),
+  [JK_TAB] = COMBO(jk_combo, KC_TAB),
+  [QW_SFT] = COMBO(qw_combo, KC_LSFT),
+  [DF_LAYER] = COMBO(df_combo, MO(_ADJUST))
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
