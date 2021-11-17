@@ -53,6 +53,7 @@ enum layer_names {
 #define HOME_SCLN RCTL_T(KC_SCLN)
 
 // Miscellaneous
+#define CUT LCMD(KC_X)
 #define COPY LCMD(KC_C)
 #define PASTE LCMD(KC_V)
 #define PBRD LSG(KC_C)

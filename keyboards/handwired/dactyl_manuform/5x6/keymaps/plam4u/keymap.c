@@ -38,7 +38,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * │DM_PLY2│G(KC_Q)├───────┼───────┼───────┼───────┤ ├───────┼───────┼───────┼───────┤   *   │DM_REC│
  * ├───────┼───────┤G(KC_S)│       │       │   &   │ │  - _  │  P4   │  P5   │  P6   ├───────┼──────┤
  * │DM_PLY1│G(KC_A)├───────┼───────┼───────┼───────┤ ├───────┼───────┼───────┼───────┤ COLN  │DM_REC│
- * ├───────┼───────┤ PBRD  │ COPY  │ PASTE │  - _  │ │   =   │  P1   │  P2   │  P3   ├───────┼──────┤
+ * ├───────┼───────┤  CUT  │ COPY  │ PASTE │  - _  │ │   =   │  P1   │  P2   │  P3   ├───────┼──────┤
  * │ REDO  │ UNDO  ├───────┼───────┼───────┴───────┘ └───────┴───────┼───────┼───────┤  / ?  │DM_RST│
  * └───────┴───────┤       │       │                                 │       │       ├───────┴──────┘
  *                 └───────┴───────┘                                 └───────┴───────┘
@@ -53,7 +53,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_F12  , KC_F1 , KC_F2 , KC_F3 , KC_F4 ,  KC_F5,                            KC_F6   , KC_F7 , KC_F8 , KC_F9 ,KC_F10 , KC_F11,
         DM_PLY2 ,G(KC_Q),G(KC_W),_______,_______,KC_PIPE,                            KC_PLUS , KC_P7 , KC_P8 , KC_P9 ,KC_ASTR,DM_REC2,
         DM_PLY1 ,G(KC_A),G(KC_S),_______,_______,KC_AMPR,                            KC_MINS , KC_P4 , KC_P5 , KC_P6 ,KC_COLN,DM_REC1,
-        REDO    ,  UNDO , PBRD  , COPY  , PASTE ,KC_MINS,                            KC_EQL  , KC_P1 , KC_P2 , KC_P3 ,KC_SLSH,DM_RSTP,
+        REDO    ,  UNDO , CUT  , COPY  , PASTE ,KC_MINS,                            KC_EQL  , KC_P1 , KC_P2 , KC_P3 ,KC_SLSH,DM_RSTP,
                          _______,_______,                                                             _______,_______,
                                             _______, _______,                   KC_DOT , KC_P0, 
                                             _______, _______,                   _______, _______, 
