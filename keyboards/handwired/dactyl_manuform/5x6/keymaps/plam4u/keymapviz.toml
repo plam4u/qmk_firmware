@@ -185,4 +185,22 @@ STN_O = O-
 STN_E = -E
 STN_U = -U
 
+KC_PSLS = /
+KC_PAST = *
+KC_PMNS = -
+KC_PPLS = +
+KC_PEQL = =
+KC_PENT = ⏎
+
+DM_RSTP = ◎ ☐
+DM_REC1 = ◎ 1
+DM_REC2 = ◎ 2
+DM_PLY1 = ▷ 1
+DM_PLY2 = ▷ 2
+
+G(KC_W) = CMD+W
+G(KC_S) = CMD+S
+G(KC_A) = CMD+A
+G(KC_Q) = CMD+Q
+
 SH_OS = SWAPHNDSl
