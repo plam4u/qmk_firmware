@@ -42,8 +42,8 @@ STN_U = -U
 
 U_EXLM = !
 KC_EXLM = !
-U_QUES = ? !
-KC_QUES = ? !
+U_QUES = ?
+KC_QUES = ?
 KC_GT = >
 KC_LT = <
 KC_HASH = #
