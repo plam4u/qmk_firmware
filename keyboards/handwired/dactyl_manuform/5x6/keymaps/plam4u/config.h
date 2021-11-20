@@ -20,7 +20,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define USE_SERIAL
 #define MASTER_LEFT
 
-#define TAPPING_TERM 175
-#define TAPPING_FORCE_HOLD
-#define IGNORE_MOD_TAP_INTERRUPT
-#define COMBO_TERM 40
+#define TAPPING_TERM 150
+#define COMBO_TERM 50
+
+// Home Row Stuff
+// #define TAPPING_FORCE_HOLD
+// #define IGNORE_MOD_TAP_INTERRUPT
+

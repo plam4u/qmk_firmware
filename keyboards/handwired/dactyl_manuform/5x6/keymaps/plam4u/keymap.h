@@ -79,6 +79,10 @@ enum layer_names {
 #define CTL_SL RCTL_T(KC_SLSH)
 #define CM_LBRC RSG(KC_LBRC)
 #define CM_RBRC RSG(KC_RBRC)
+#define TAB_ALT ALT_T(KC_TAB)
+#define ESC_CMD CMD_T(KC_ESC)
+#define SPC_SFT LSFT_T(KC_SPC) 
+#define ENT_SFT RSFT_T(KC_ENT) 
 
 // Tap Dance
 #ifdef TAP_DANCE_ENABLE
