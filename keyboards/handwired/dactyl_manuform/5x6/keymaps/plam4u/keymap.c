@@ -20,7 +20,7 @@ enum layer_keycodes {
 
 // Layer keys
 #define NUM_ESC LT(_NUMPAD, KC_ESC)
-#define NAV_BSPC LT(_SYM_NAV, KC_BSPC)
+#define BSP_NAV LT(_SYM_NAV, KC_BSPC)
 /* #define SYM_NAV MO(_SYM_NAV) */
 /* #define SYM_LEFT MO(_SYM_LEFT) */
 #define ADJUST MO(_META_LEFT)
@@ -100,7 +100,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * └───────┴───────┤  TAB  │  OS⎇  │                                 │  = +  │  - _  ├───────┴──────┘
  *                 └───────┴───────┘                                 └───────┴───────┘
  *                                 ┏━━━━━━━┳━━━━━━━┓ ┏━━━━━━━┳━━━━━━━┓
- *                                 ┃ESC_CMD┃SPC_SFT┃ ┃ENT_SFT┃NAV_BSP┃
+ *                                 ┃ESC_CMD┃SPC_SFT┃ ┃ENT_SFT┃BSP_NAV┃
  *                                 ┡━━━━━━━╋━━━━━━━┫ ┣━━━━━━━╋━━━━━━━┩
  *                                 │NUM_ESC┃ALFRED ┃ ┃TAB_ALT┃TAB_ALT│
  *                                 ├───────╄━━━━━━━┩ ┡━━━━━━━╃───────┤
@@ -112,7 +112,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_ESC , KC_A   , KC_S   , KC_D   , KC_F   , KC_G   ,                       KC_H   , KC_J   , KC_K   , KC_L   , KC_SCLN, KC_QUOT,
         KC_GRV , CTL_Z  , KC_X   , KC_C   , KC_V   , KC_B   ,                       KC_N   , KC_M   , KC_COMM, KC_DOT , CTL_SL , KC_BSLS,
                           KC_TAB , OS_LALT,                                                           KC_EQL , KC_MINS, 
-                                           ESC_CMD , SPC_SFT,                       ENT_SFT,NAV_BSPC, 
+                                           ESC_CMD , SPC_SFT,                       ENT_SFT, BSP_NAV, 
                                            NUM_ESC , ALFRED ,                       TAB_ALT, TAB_ALT, 
                                            SPACE_L , SPACE_R,                       SPACE_R, SPACE_L
     ),
