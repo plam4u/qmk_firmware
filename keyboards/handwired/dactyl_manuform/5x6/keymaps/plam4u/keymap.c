@@ -77,8 +77,8 @@ enum layer_keycodes {
 #define CM_RBRC RSG(KC_RBRC)
 #define TAB_ALT ALT_T(KC_TAB)
 #define ESC_CMD CMD_T(KC_ESC)
-#define ENT_HPR MEH_T(KC_ENT)
-#define ESC_MEH HYPR_T(KC_ESC)
+#define ENT_HPR HYPR_T(KC_ENT)
+#define ESC_MEH MEH_T(KC_ESC)
 #define SPC_SFT LSFT_T(KC_SPC) 
 #define ENT_SFT RSFT_T(KC_ENT) 
 // Tap Dance
