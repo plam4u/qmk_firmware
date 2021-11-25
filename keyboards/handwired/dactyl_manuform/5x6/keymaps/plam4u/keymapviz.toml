@@ -76,6 +76,7 @@ KC_BSLASH = \ |
 U_QUOT = ' "
 KC_QUOT = ' "
 KC_SCLN = : ;
+KC_COLN = :
 KC_PSCR = PrintSc
 KC_NLCK = NumLock
 KC_SLCK = ScrLock
