@@ -1,4 +1,5 @@
 #pragma once
+
 #include QMK_KEYBOARD_H
 
 // Layer keys
@@ -6,28 +7,23 @@
 #define BSP_RS1 LT(_RAISE1, KC_BSPC)
 #define BOTH1 MO(_BOTH1)
 
-// One Shot Modifiers
-#define OS_LCTL OSM(MOD_LCTL)
-#define OS_RCTL OSM(MOD_RCTL)
-#define OS_LSFT OSM(MOD_LSFT)
-#define OS_RSFT OSM(MOD_RSFT)
-#define OS_LALT OSM(MOD_LALT)
-#define OS_RALT OSM(MOD_LALT)
-#define OS_LCMD OSM(MOD_LGUI)
-#define OS_RCMD OSM(MOD_RGUI)
+// Apps
+#define ALFRED G(KC_SPC)
+#define ITERM G(KC_ESC)
+#define QUITAPP G(KC_Q)
+#define MEETING HYPR(KC_F16)
 
 // Miscellaneous
-#define CUT LCMD(KC_X)
-#define COPY LCMD(KC_C)
-#define PASTE LCMD(KC_V)
-#define PBRD LSG(KC_C)
-#define UNDO LCMD(KC_Z)
+#define CUT G(KC_X)
+#define COPY G(KC_C)
+#define PASTE G(KC_V)
+#define CLIPBRD LSG(KC_C)
+#define UNDO G(KC_Z)
 #define REDO LSG(KC_Z)
-#define ALFRED G(KC_SPC)
 
-// macOS spaces navigation
-#define SPACE_L MEH_T(KC_F17)
-#define SPACE_R HYPR_T(KC_F16)
+// macOS navigation
+#define SPC_L MEH_T(KC_F17)
+#define SPC_R HYPR_T(KC_F16)
 
 // Combinations
 #define CTL_Z CTL_T(KC_Z)
@@ -43,6 +39,16 @@
 #define ENT_HPR HYPR_T(KC_ENT)
 #define SPC_SFT LSFT_T(KC_SPC) 
 #define ENT_SFT RSFT_T(KC_ENT) 
+
+// One Shot Modifiers
+#define OS_LCTL OSM(MOD_LCTL)
+#define OS_RCTL OSM(MOD_RCTL)
+#define OS_LSFT OSM(MOD_LSFT)
+#define OS_RSFT OSM(MOD_RSFT)
+#define OS_LALT OSM(MOD_LALT)
+#define OS_RALT OSM(MOD_LALT)
+#define OS_LCMD OSM(MOD_LGUI)
+#define OS_RCMD OSM(MOD_RGUI)
 
 // Left-hand home row mods
 #define HOME_A LCTL_T(KC_A)
