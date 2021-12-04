@@ -28,8 +28,10 @@
 // Combinations
 #define CTL_Z CTL_T(KC_Z)
 #define CTL_SL RCTL_T(KC_SLSH)
-#define CM_LBRC RSG(KC_LBRC)
-#define CM_RBRC RSG(KC_RBRC)
+#define G_LBRC G(KC_LBRC)
+#define G_RBRC G(KC_RBRC)
+#define SG_LBRC RSG(KC_LBRC)
+#define SG_RBRC RSG(KC_RBRC)
 #define TAB_ALT ALT_T(KC_TAB)
 #define TAB_CMD CMD_T(KC_TAB)
 #define TAB_SFT SFT_T(KC_TAB)
