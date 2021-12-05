@@ -166,24 +166,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 
 // ----------------------------------------------------------------------------
-// ------------------------------- COMBOS -------------------------------------
-#ifdef COMBO_ENABLE
-enum combos {
-  JK_X,
-  DF_X,
-  COMBO_LENGTH
-};
-uint16_t COMBO_LEN = COMBO_LENGTH;
-const uint16_t PROGMEM jk_combo[] = {KC_J, KC_K, COMBO_END};
-const uint16_t PROGMEM df_combo[] = {KC_D, KC_F, COMBO_END};
-combo_t key_combos[] = {
-  [JK_X] = COMBO(jk_combo, KC_X),
-  [DF_X] = COMBO(df_combo, KC_X)
-};
-#endif
-
-
-// ----------------------------------------------------------------------------
 // ------------------------------ TAP DANCE -----------------------------------
 #ifdef TAP_DANCE_ENABLE
 td_state_t cur_dance(qk_tap_dance_state_t *state) {
