@@ -284,6 +284,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case APPNEXT:
             if (record->event.pressed) {
+                unregister_code(KC_LSFT);
                 register_code(KC_LCMD);
                 register_code(KC_TAB);
             } else {
