@@ -37,9 +37,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         ENT_HPR, KC_Q   , KC_W   , KC_E   , KC_R   , KC_T   ,                       KC_Y   , KC_U   , KC_I   , KC_O   , KC_P   , DEBUG  ,
         ESC_MEH, KC_A   , KC_S   , KC_D   , KC_F   , KC_G   ,                       KC_H   , KC_J   , KC_K   , KC_L   , KC_COLN, KC_QUOT,
         KC_GRV , CTL_Z  , KC_X   , KC_C   , KC_V   , KC_B   ,                       KC_N   , KC_M   , KC_COMM, KC_DOT , CTL_SL , KC_BSLS,
-                          KC_TAB , KC_LEAD,                                                           KC_EQL , KC_MINS, 
-                                            ESC_LW1, SPC_SFT,                       ENT_SFT, BSP_RS1, 
-                                            ESC_CMD, SPC_SFT,                       OS_RSFT, OS_RCMD, 
+                          KC_TAB , KC_LEAD,                                                           KC_EQL , KC_MINS,
+                                            ESC_LW1, SPC_SFT,                       ENT_SFT, BSP_RS1,
+                                            ESC_CMD, SPC_SFT,                       OS_RSFT, OS_RCMD,
                                             TAB_CTL, TAB_ALT,                       OS_RALT, OS_RCTL
     ),
 
@@ -95,9 +95,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_QUES, KC_PERC, KC_AT  , KC_LCBR, KC_RCBR, KC_CIRC,                    SG_LBRC, KC_MPLY, KC_MUTE, SG_RBRC , _______, KC_MUTE,
         KC_EXLM, KC_UNDS, KC_AMPR, KC_LPRN, KC_RPRN, KC_DLR ,                    KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT , _______, KC_VOLU,
         KC_TILD, KC_HASH, KC_PIPE, KC_LBRC, KC_RBRC, KC_ASTR,                    KC_EQL , KC_BSPC, KC_ENT , KC_DEL  , _______, KC_VOLD,
-                          _______, _______,                                                        _______, _______, 
-                                            BOTH1  , _______,                    _______, _______, 
-                                            _______, _______,                    _______, _______, 
+                          _______, _______,                                                        _______, _______,
+                                            BOTH1  , _______,                    _______, _______,
+                                            _______, _______,                    _______, _______,
                                             _______, _______,                    _______, _______
     ),
 
@@ -124,9 +124,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______, _______, _______, _______, _______, DM_PLY2,                    DM_REC2, _______, _______, _______, _______, _______,
         _______, _______, _______, _______, _______, DM_PLY1,                    DM_REC1, _______, _______, _______, _______, _______,
         _______, _______, _______, _______, _______, _______,                    DM_RSTP, _______, _______, _______, _______, _______,
-                          _______, _______,                                                        _______, _______, 
-                                            _______, _______,                    _______, _______, 
-                                            _______, _______,                    _______, _______, 
+                          _______, _______,                                                        _______, _______,
+                                            _______, _______,                    _______, _______,
+                                            _______, _______,                    _______, _______,
                                             _______, _______,                    _______, _______
     ),
 
@@ -171,10 +171,10 @@ uint8_t oneshot_mod_state;
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 #ifdef CONSOLE_ENABLE
     uprintf(
-        "KL: kc: 0x%04X, col: %u, row: %u, pressed: %b, time: %u, interrupt: %b, count: %u\n", 
+        "KL: kc: 0x%04X, col: %u, row: %u, pressed: %b, time: %u, interrupt: %b, count: %u\n",
         keycode, record->event.key.col, record->event.key.row, record->event.pressed, record->event.time, record->tap.interrupted, record->tap.count
     );
-#endif 
+#endif
 
     mod_state = get_mods();
     oneshot_mod_state = get_oneshot_mods();

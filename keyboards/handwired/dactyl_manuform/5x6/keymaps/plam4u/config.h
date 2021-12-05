@@ -23,6 +23,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define TAPPING_TERM 150
 #define COMBO_TERM 50
 
+// Prevent recursive macros
+#define DYNAMIC_MACRO_NO_NESTING 
+
 // Home Row Stuff
 // #define TAPPING_FORCE_HOLD
 // #define IGNORE_MOD_TAP_INTERRUPT
