@@ -1,6 +1,33 @@
 #pragma once
-
 #include QMK_KEYBOARD_H
+
+#ifdef TAP_DANCE_ENABLE
+typedef enum {
+    TD_SINGLE_HOLD,
+    TD_SINGLE_TAP,
+    TD_DOUBLE_HOLD,
+    TD_DOUBLE_TAP,
+    TD_DOUBLE_SINGLE_TAP, // Send two single taps
+    TD_TRIPLE_HOLD,
+    TD_TRIPLE_TAP,
+    TD_NONE,
+    TD_UNKNOWN,
+} td_state_t;
+typedef struct {
+    td_state_t state;
+} td_tap_t;
+td_state_t cur_dance(qk_tap_dance_state_t *state);
+// Tap dance enums
+enum {
+    CLN_SCLN,
+    THUMB1,
+};
+#define TD_CLN TD(CLN_SCLN)
+#define TD_T1 TD(THUMB1)
+void thumb1_finished(qk_tap_dance_state_t *state, void *user_data);
+void thumb1_reset(qk_tap_dance_state_t *state, void *user_data);
+#endif // end TAP_DANCE_ENABLE
+
 
 // Layer keys
 #define ESC_LW1 LT(_LOWER1, KC_ESC)
