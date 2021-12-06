@@ -20,11 +20,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define USE_SERIAL
 #define MASTER_LEFT
 
-#define TAPPING_TERM 175
+#define TAPPING_TERM 200
 #define COMBO_TERM 50
 
-// Prevent recursive macros
-#define DYNAMIC_MACRO_NO_NESTING 
+#define DYNAMIC_MACRO_NO_NESTING // No recursion
 
 // Home Row Stuff
 // #define TAPPING_FORCE_HOLD
