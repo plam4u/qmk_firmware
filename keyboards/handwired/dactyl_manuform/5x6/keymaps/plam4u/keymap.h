@@ -21,12 +21,14 @@ td_state_t cur_dance(qk_tap_dance_state_t *state);
 enum {
     TD_CLN_SCLN,
     TD_SPC_ENT,
+    TD_TOPROW,
     TD_THUMB1,
 };
 #define TD_CLN TD(TD_CLN_SCLN)
 #define TD_SPC TD(TD_SPC_ENT)
 void spc_finished(qk_tap_dance_state_t *state, void *user_data);
 void spc_reset(qk_tap_dance_state_t *state, void *user_data);
+#define TD_TR TD(TD_TOPROW)
 #define TD_T1 TD(TD_THUMB1)
 void thumb1_finished(qk_tap_dance_state_t *state, void *user_data);
 void thumb1_reset(qk_tap_dance_state_t *state, void *user_data);
