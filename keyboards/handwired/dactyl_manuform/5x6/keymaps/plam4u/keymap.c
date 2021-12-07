@@ -1,7 +1,7 @@
 #include QMK_KEYBOARD_H
 #include "keymap.h"
 
-enum layer_keycodes {
+enum custom_keycodes {
   QWERTY = SAFE_RANGE,
   APPNEXT,
   APPPREV,
@@ -30,7 +30,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * └───────┴───────┤  TAB  │ LEAD  │                                 │  = +  │  - _  ├───────┴──────┘
  *                 └───────┴───────┘                                 └───────┴───────┘
  *                                 ┏━━━━━━━┳━━━━━━━┓ ┏━━━━━━━┳━━━━━━━┓
- *                                 ┃ TD_T1 ┃TD_SPC ┃ ┃ENT_SFT┃BSP_RS1┃
+ *                                 ┃ TD_T1 ┃SPC_SFT┃ ┃ENT_SFT┃BSP_RS1┃
  *                                 ┡━━━━━━━╋━━━━━━━┫ ┣━━━━━━━╋━━━━━━━┩
  *                                 │ESC_CMD┃SPC_SFT┃ ┃  OS⇧  ┃  OS◆  │
  *                                 ├───────╄━━━━━━━┩ ┡━━━━━━━╃───────┤
@@ -42,7 +42,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         ESC_MEH, KC_A   , KC_S   , KC_D   , KC_F   , KC_G   ,                       KC_H   , KC_J   , KC_K   , KC_L   , TD_CLN , KC_QUOT,
         KC_GRV , CTL_Z  , KC_X   , KC_C   , KC_V   , KC_B   ,                       KC_N   , KC_M   , KC_COMM, KC_DOT , CTL_SL  , KC_BSLS,
                           KC_TAB , KC_LEAD,                                                           KC_EQL , KC_MINS,
-                                            TD_T1  , TD_SPC ,                       ENT_SFT, BSP_RS1,
+                                            TD_T1  , SPC_SFT,                       ENT_SFT, BSP_RS1,
                                             ESC_CMD, SPC_SFT,                       OS_RSFT, OS_RCMD,
                                             TAB_CTL, TAB_ALT,                       OS_RALT, OS_RCTL
     ),
