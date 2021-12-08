@@ -245,7 +245,21 @@ static void render_info(void) {
     }
 
     // Print string received via HID RAW
-    oled_write_ln(receive_buffer, false);
+    oled_write_ln(receive_buffer, false);}
+
+bool oled_task_user(void) {
+    static bool finished_timer = false;
+    if (!finished_timer && (timer_elapsed(startup_timer) < 1000)) {
+        render_logo();
+    } else {
+        if (!finished_timer) {
+            oled_clear();
+            finished_timer = true;
+        }
+        render_info();
+    }
+    return false;
+
 }
 
 void oled_task_user(void) {
