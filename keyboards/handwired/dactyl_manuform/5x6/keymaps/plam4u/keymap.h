@@ -48,7 +48,7 @@ void spc_reset(qk_tap_dance_state_t *state, void *user_data);
 #define TD_TR_R TD(TD_TR_RIGHT)
 void dance_tr_left(qk_tap_dance_state_t *state, void *user_data);
 void dance_tr_right(qk_tap_dance_state_t *state, void *user_data);
-#define TD_T1 TD(TD_THUMB1)
+#define TD_LWR1 TD(TD_THUMB1)
 void thumb1_finished(qk_tap_dance_state_t *state, void *user_data);
 void thumb1_reset(qk_tap_dance_state_t *state, void *user_data);
 #endif // end TAP_DANCE_ENABLE
@@ -57,13 +57,29 @@ void thumb1_reset(qk_tap_dance_state_t *state, void *user_data);
 // Layer keys
 #define ESC_LW1 LT(_LOWER1, KC_ESC)
 #define BSP_RS1 LT(_RAISE1, KC_BSPC)
+#define LOWER2 TO(_LOWER2)
+#define LOWER3 TO(_LOWER3)
+#define RAISE2 TO(_RAISE2)
+#define RAISE3 TO(_RAISE3)
 #define BOTH1 MO(_BOTH1)
 
 // Apps
 #define ALFRED G(KC_SPC)
 #define ITERM G(KC_ESC)
 #define QUITAPP G(KC_Q)
+#define HIDEAPP MEH(KC_G)
 #define MEETING HYPR(KC_F16)
+
+#define APP01 S(KC_F11)
+#define APP02 S(KC_F12)
+#define APP03 S(KC_F13)
+#define APP04 S(KC_F14)
+#define APP05 S(KC_F15)
+#define APP06 S(KC_F16)
+#define APP07 S(KC_F17)
+#define APP08 S(KC_F18)
+#define APP09 S(KC_F19)
+#define APP10 S(KC_F20)
 
 // Miscellaneous
 #define CUT G(KC_X)
@@ -74,21 +90,26 @@ void thumb1_reset(qk_tap_dance_state_t *state, void *user_data);
 #define REDO LSG(KC_Z)
 
 // macOS navigation
-#define SPC_L MEH_T(KC_F17)
-#define SPC_R HYPR_T(KC_F16)
+#define SPACE_L MEH_T(KC_F17)
+#define SPACE_R HYPR_T(KC_F16)
 
 // Combinations
 #define CTL_Z CTL_T(KC_Z)
 #define CTL_SL RCTL_T(KC_SLSH)
 #define G_LBRC G(KC_LBRC)
 #define G_RBRC G(KC_RBRC)
+#define BACK G_LBRC
+#define FORWARD G_RBRC
 #define SG_LBRC RSG(KC_LBRC)
 #define SG_RBRC RSG(KC_RBRC)
+#define TABPREV SG_LBRC
+#define TABNEXT SG_RBRC
 #define TAB_ALT ALT_T(KC_TAB)
 #define TAB_CMD CMD_T(KC_TAB)
 #define TAB_SFT SFT_T(KC_TAB)
 #define TAB_CTL CTL_T(KC_TAB)
 #define ESC_CMD CMD_T(KC_ESC)
+#define ESC_SFT SFT_T(KC_ESC)
 #define ESC_MEH MEH_T(KC_ESC)
 #define ENT_HPR HYPR_T(KC_ENT)
 #define SPC_SFT LSFT_T(KC_SPC) 
