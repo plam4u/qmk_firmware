@@ -19,12 +19,27 @@ typedef struct {
 td_state_t cur_dance(qk_tap_dance_state_t *state);
 // Tap dance enums
 enum {
+    TD_ACCENT_A,
+    TD_ACCENT_E,
+    TD_ACCENT_U,
+    TD_ACCENT_I,
+    TD_ACCENT_O,
     TD_CLN_SCLN,
     TD_SPC_ENT,
     TD_TR_LEFT,
     TD_TR_RIGHT,
     TD_THUMB1,
 };
+#define TD_AA TD(TD_ACCENT_A)
+#define TD_AE TD(TD_ACCENT_E)
+#define TD_AU TD(TD_ACCENT_U)
+#define TD_AI TD(TD_ACCENT_I)
+#define TD_AO TD(TD_ACCENT_O)
+void dance_accent_a(qk_tap_dance_state_t *state, void *user_data);
+void dance_accent_e(qk_tap_dance_state_t *state, void *user_data);
+void dance_accent_u(qk_tap_dance_state_t *state, void *user_data);
+void dance_accent_i(qk_tap_dance_state_t *state, void *user_data);
+void dance_accent_o(qk_tap_dance_state_t *state, void *user_data);
 #define TD_CLN TD(TD_CLN_SCLN)
 #define TD_SPC TD(TD_SPC_ENT)
 void spc_finished(qk_tap_dance_state_t *state, void *user_data);

@@ -238,6 +238,53 @@ td_state_t cur_dance(qk_tap_dance_state_t *state) {
             return TD_UNKNOWN;
     }
 }
+// ============================================================================
+// ============================= TD ACCENTS ===================================
+void dance_accent_a(qk_tap_dance_state_t *state, void *user_data) {
+    if (state->count == 1) {
+        tap_code(KC_A);
+    } else {
+        tap_code16(LALT(KC_E));
+        tap_code(KC_A);
+    }
+    reset_tap_dance(state);
+}
+void dance_accent_e(qk_tap_dance_state_t *state, void *user_data) {
+    if (state->count == 1) {
+        tap_code(KC_E);
+    } else {
+        tap_code16(LALT(KC_E));
+        tap_code(KC_E);
+    }
+    reset_tap_dance(state);
+}
+void dance_accent_u(qk_tap_dance_state_t *state, void *user_data) {
+    if (state->count == 1) {
+        tap_code(KC_U);
+    } else {
+        tap_code16(LALT(KC_E));
+        tap_code(KC_U);
+    }
+    reset_tap_dance(state);
+}
+void dance_accent_i(qk_tap_dance_state_t *state, void *user_data) {
+    if (state->count == 1) {
+        tap_code(KC_I);
+    } else {
+        tap_code16(LALT(KC_E));
+        tap_code(KC_I);
+    }
+    reset_tap_dance(state);
+}
+void dance_accent_o(qk_tap_dance_state_t *state, void *user_data) {
+    if (state->count == 1) {
+        tap_code(KC_O);
+    } else {
+        tap_code16(LALT(KC_E));
+        tap_code(KC_O);
+    }
+    reset_tap_dance(state);
+}
 
 // ============================================================================
 // =============================== TD SPACE ===================================
@@ -289,6 +336,7 @@ void spc_reset(qk_tap_dance_state_t *state, void *user_data) {
     }
     spc_td_state.state = TD_NONE;
 }
+
 // ============================================================================
 // =============================== TD THUMB 1 =================================
 static td_tap_t thumb1_td_state = {
@@ -348,6 +396,11 @@ void dance_tr_right(qk_tap_dance_state_t *state, void *user_data) {
     reset_tap_dance(state);
 }
 qk_tap_dance_action_t tap_dance_actions[] = {
+    [TD_ACCENT_A] = ACTION_TAP_DANCE_FN(dance_accent_a),
+    [TD_ACCENT_E] = ACTION_TAP_DANCE_FN(dance_accent_e),
+    [TD_ACCENT_U] = ACTION_TAP_DANCE_FN(dance_accent_u),
+    [TD_ACCENT_I] = ACTION_TAP_DANCE_FN(dance_accent_i),
+    [TD_ACCENT_O] = ACTION_TAP_DANCE_FN(dance_accent_o),
     [TD_CLN_SCLN] = ACTION_TAP_DANCE_DOUBLE(KC_COLN, KC_SCLN),
     [TD_SPC_ENT] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, spc_finished, spc_reset),
     [TD_TR_LEFT] = ACTION_TAP_DANCE_FN(dance_tr_left),
