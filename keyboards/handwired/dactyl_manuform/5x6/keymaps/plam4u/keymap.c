@@ -65,7 +65,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * │MEETING│       ├───────┼───────┼───────┼───────┤ ├───────┼───────┼───────┼───────┤   0   │RESET │
  * ├───────┼───────┤       │APPPREV│APPNEXT│HIDEAPP│ │   *   │   4   │   5   │   6   ├───────┼──────┤
  * │ ITERM │ALFRED ├───────┼───────┼───────┼───────┤ ├───────┼───────┼───────┼───────┤   :   │      │
- * ├───────┼───────┤LALT ⎇ │ LCMD  │LSFT ⇧ │       │ │  = +  │   1   │   2   │   3   ├───────┼──────┤
+ * ├───────┼───────┤LALT ⎇ │ LCMD  │LSFT ⇧ │CLIPBRD│ │  = +  │   1   │   2   │   3   ├───────┼──────┤
  * │       │LCTL ⎈ ├───────┼───────┼───────┴───────┘ └───────┴───────┼───────┼───────┤  . >  │      │
  * └───────┴───────┤LOWER3 │LOWER2 │                                 │   +   │  - _  ├───────┴──────┘
  *                 └───────┴───────┘                                 └───────┴───────┘
@@ -81,7 +81,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
         MEETING, _______, TABPREV, BACK   , FORWARD, TABNEXT,                    KC_SLSH, KC_7   , KC_8   , KC_9   , KC_0   , RESET  ,
         ITERM  , ALFRED , _______, APPPREV, APPNEXT, HIDEAPP,                    KC_ASTR, KC_4   , KC_5   , KC_6   , KC_COLN, _______,
-        _______, KC_LCTL, KC_LALT, KC_LCMD, KC_LSFT, _______,                    KC_EQL , KC_1   , KC_2   , KC_3   , KC_DOT , _______,
+        _______, KC_LCTL, KC_LALT, KC_LCMD, KC_LSFT, CLIPBRD,                    KC_EQL , KC_1   , KC_2   , KC_3   , KC_DOT , _______,
                           LOWER3 , LOWER2 ,                                                        KC_PLUS, KC_MINS,
                                             _______, _______,                    _______, _______,
                                             _______, _______,                    _______, _______,
@@ -585,6 +585,16 @@ bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
             return true;
         default:
             // Do not select the hold action when another key is pressed.
+            return false;
+    }
+}
+
+bool get_tapping_force_hold(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case SPC_SFT:
+        case ENT_SFT:
+            return true;
+        default:
             return false;
     }
 }

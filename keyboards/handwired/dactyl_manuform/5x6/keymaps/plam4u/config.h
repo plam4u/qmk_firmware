@@ -11,6 +11,7 @@
 // #define IGNORE_MOD_TAP_INTERRUPT
 // #define PERMISSIVE_HOLD
 #define HOLD_ON_OTHER_KEY_PRESS_PER_KEY
+#define TAPPING_FORCE_HOLD_PER_KEY
 
 // Mouse Keys: Constant mode
 #define MK_3_SPEED
