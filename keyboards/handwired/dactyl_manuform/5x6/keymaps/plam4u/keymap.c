@@ -536,10 +536,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case ESC_LW1:
         case TD_LWR1:
-            if (!record->event.pressed) {
-                unregister_code(KC_LCMD);
+            if (record->event.pressed) {
                 // Reset all layers including _RAISE2 used for mouse keys
-                layer_clear();
+                if (layer_state_is(_RAISE2)) {
+                    layer_clear();
+                    return false;
+                }
+            } else {
+                unregister_code(KC_LCMD);
             }
             break;
 
