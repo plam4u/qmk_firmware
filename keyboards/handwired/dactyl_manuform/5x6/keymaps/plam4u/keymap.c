@@ -181,7 +181,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /*                 ┌───────┬───────┬───────┬───────┐ ┌───────┬───────┬───────┬───────┐
  * ┌───────┬───────┤       │       │       │       │ │       │       │       │       ├───────┬──────┐
  * │       │       ├───────┼───────┼───────┼───────┤ ├───────┼───────┼───────┼───────┤       │      │
- * ├───────┼───────┤WHEEL ↓│MOUSE ↑│WHEEL ↑│       │ │       │ BTN1  │ BTN3  │ BTN2  ├───────┼──────┤
+ * ├───────┼───────┤WHEEL ↓│MOUSE ↑│WHEEL ↑│       │ │TD_CYPE│ BTN1  │ BTN3  │ BTN2  ├───────┼──────┤
  * │       │       ├───────┼───────┼───────┼───────┤ ├───────┼───────┼───────┼───────┤       │ ▷ 1  │
  * ├───────┼───────┤MOUSE ←│MOUSE ↓│MOUSE →│ WH_R  │ │       │ ACL2  │ ACL1  │ ACL0  ├───────┼──────┤
  * │       │ WH_L  ├───────┼───────┼───────┼───────┤ ├───────┼───────┼───────┼───────┤       │ ◎ ☐  │
@@ -199,7 +199,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_RAISE2] = LAYOUT_5x6(
         _______, _______, _______, _______, _______, _______,                    _______, _______, _______, _______, _______, _______,
 
-        _______, _______, KC_WH_D, KC_MS_U, KC_WH_U, _______,                    _______, KC_BTN1, KC_BTN3, KC_BTN2, _______, DM_PLY1,
+        _______, _______, KC_WH_D, KC_MS_U, KC_WH_U, _______,                    TD_CYPE, KC_BTN1, KC_BTN3, KC_BTN2, _______, DM_PLY1,
         _______, KC_WH_L, KC_MS_L, KC_MS_D, KC_MS_R, KC_WH_R,                    _______, KC_ACL2, KC_ACL1, KC_ACL0, _______, DM_RSTP,
         _______, OS_LCTL, OS_LALT, OS_LCMD, OS_LSFT, KC_BTN3,                    _______, OS_RSFT, OS_RCMD, OS_LALT, OS_RCTL, DM_REC1,
                           _______, _______,                                                        _______, _______,
@@ -440,15 +440,25 @@ void thumb1_reset(qk_tap_dance_state_t *state, void *user_data) {
 }
 
 // ============================================================================
+// ============================ TD COPY PASTE =================================
+void dance_copy_paste(qk_tap_dance_state_t *state, void *user_data) {
+    if (state->count == 1) {
+        tap_code16(G(KC_C));
+    } else {
+        tap_code16(G(KC_V));
+    }
+}
+
+// ============================================================================
 // =============================== TD TOP ROW =================================
-void dance_tr_left(qk_tap_dance_state_t *state, void *user_data) {
+void dance_toprow_left(qk_tap_dance_state_t *state, void *user_data) {
     cur_row = state->count - 1;
     if (cur_row >= TR_ROWS_PER_SIDE) {
         cur_row = TR_ROWS_PER_SIDE;
     }
     reset_tap_dance(state);
 }
-void dance_tr_right(qk_tap_dance_state_t *state, void *user_data) {
+void dance_toprow_right(qk_tap_dance_state_t *state, void *user_data) {
     cur_row = TR_ROWS_PER_SIDE + state->count - 1;
     if (cur_row >= TR_ROWS_PER_SIDE * 2) {
         cur_row = TR_ROWS_PER_SIDE;
@@ -463,8 +473,9 @@ qk_tap_dance_action_t tap_dance_actions[] = {
     [TD_ACCENT_O] = ACTION_TAP_DANCE_FN(dance_accent_o),
     [TD_CLN_SCLN] = ACTION_TAP_DANCE_DOUBLE(KC_COLN, KC_SCLN),
     [TD_SPC_ENT] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, spc_finished, spc_reset),
-    [TD_TR_LEFT] = ACTION_TAP_DANCE_FN(dance_tr_left),
-    [TD_TR_RIGHT] = ACTION_TAP_DANCE_FN(dance_tr_right),
+    [TD_TR_LEFT] = ACTION_TAP_DANCE_FN(dance_toprow_left),
+    [TD_TR_RIGHT] = ACTION_TAP_DANCE_FN(dance_toprow_right),
+    [TD_COPY_PASTE] = ACTION_TAP_DANCE_FN(dance_copy_paste),
     [TD_THUMB1] = ACTION_TAP_DANCE_FN_ADVANCED(thumb1_each, thumb1_finished, thumb1_reset),
 };
 #endif
@@ -518,6 +529,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             }
             break;
 
+        case DM_REC1:
+            if (record->event.pressed) {
+                layer_clear();
+            }
+            break;
         case QWERTY:
             if (record->event.pressed) {
                 set_single_persistent_default_layer(_QWERTY);
