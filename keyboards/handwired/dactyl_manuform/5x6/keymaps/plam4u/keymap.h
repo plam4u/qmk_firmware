@@ -29,7 +29,6 @@ enum {
     TD_TR_LEFT,
     TD_TR_RIGHT,
     TD_COPY_PASTE,
-    TD_CMD_MODS,
     TD_THUMB1,
 };
 #define TD_AA TD(TD_ACCENT_A)
@@ -50,8 +49,6 @@ void spc_reset(qk_tap_dance_state_t *state, void *user_data);
 #define TD_TR_R TD(TD_TR_RIGHT)
 void dance_tr_left(qk_tap_dance_state_t *state, void *user_data);
 void dance_tr_right(qk_tap_dance_state_t *state, void *user_data);
-#define TD_CMD TD(TD_CMD_MODS)
-void dance_cmd_mods(qk_tap_dance_state_t *state, void *user_data);
 #define TD_CYPE TD(TD_COPY_PASTE)
 void dance_copy_paste(qk_tap_dance_state_t *state, void *user_data);
 #define TD_LWR1 TD(TD_THUMB1)
