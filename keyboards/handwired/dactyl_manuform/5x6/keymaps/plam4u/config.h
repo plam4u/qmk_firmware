@@ -6,9 +6,11 @@
 #define TAPPING_TERM 200
 #define COMBO_TERM 50
 #define DYNAMIC_MACRO_NO_NESTING // No recursion
+
 // #define TAPPING_FORCE_HOLD
 // #define IGNORE_MOD_TAP_INTERRUPT
 // #define PERMISSIVE_HOLD
+#define HOLD_ON_OTHER_KEY_PRESS_PER_KEY
 
 // Mouse Keys: Constant mode
 #define MK_3_SPEED
