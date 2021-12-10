@@ -53,7 +53,6 @@ void thumb1_finished(qk_tap_dance_state_t *state, void *user_data);
 void thumb1_reset(qk_tap_dance_state_t *state, void *user_data);
 #endif // end TAP_DANCE_ENABLE
 
-
 // Layer keys
 #define ESC_LW1 LT(_LOWER1, KC_ESC)
 #define BSP_RS1 LT(_RAISE1, KC_BSPC)

@@ -502,13 +502,19 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case TD_LWR1:
             if (!record->event.pressed) {
                 unregister_code(KC_LCMD);
+                // Reset all layers including _RAISE2 used for mouse keys
                 layer_clear();
             }
             break;
 
         case BSP_RS1:
-            if (!record->event.pressed) {
-                layer_clear();
+            if (record->event.pressed) {
+                // Clear _RAISE2 when we begin a new Raise sequence
+                // in case it was left from before
+                layer_off(_RAISE2);
+            } else {
+                layer_off(_RAISE1);
+                layer_off(_RAISE3);
             }
             break;
 
