@@ -59,6 +59,7 @@ void thumb1_reset(qk_tap_dance_state_t *state, void *user_data);
 // Layer keys
 #define ESC_LW1 LT(_LOWER1, KC_ESC)
 #define BSP_RS1 LT(_RAISE1, KC_BSPC)
+#define DEL_RS1 LT(_RAISE1, KC_DEL)
 #define LOWER2 TO(_LOWER2)
 #define LOWER3 TO(_LOWER3)
 #define RAISE2 TO(_RAISE2)
@@ -116,6 +117,10 @@ void thumb1_reset(qk_tap_dance_state_t *state, void *user_data);
 #define ENT_HPR HYPR_T(KC_ENT)
 #define SPC_SFT LSFT_T(KC_SPC) 
 #define ENT_SFT RSFT_T(KC_ENT) 
+#define ENT_CTL CTL_T(KC_ENT) 
+#define ENT_CMD CMD_T(KC_ENT) 
+#define ENT_ALT ALT_T(KC_ENT) 
+#define BSP_SFT RSFT_T(KC_BSPC) 
 
 // One Shot Modifiers
 #define OS_LCTL OSM(MOD_LCTL)
