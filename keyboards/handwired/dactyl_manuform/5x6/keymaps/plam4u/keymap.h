@@ -84,28 +84,33 @@ void thumb1_reset(qk_tap_dance_state_t *state, void *user_data);
 #define HIDEAPP MEH(KC_G)
 #define MEETING HYPR(KC_F16)
 
+// Left hand
 #define APP01 S(KC_F11)
 #define APP02 S(KC_F12)
 #define APP03 S(KC_F13)
 #define APP04 S(KC_F14)
 #define APP05 S(KC_F15)
+
 #define APP06 S(KC_F16)
 #define APP07 S(KC_F17)
 #define APP08 S(KC_F18)
 #define APP09 S(KC_F19)
 #define APP10 S(KC_F20)
 
+// Left hand
 #define APP11 A(KC_F11)
 #define APP12 A(KC_F12)
 #define APP13 A(KC_F13)
 #define APP14 A(KC_F14)
 #define APP15 A(KC_F15)
+
 #define APP16 A(KC_F16)
 #define APP17 A(KC_F17)
 #define APP18 A(KC_F18)
 #define APP19 A(KC_F19)
 #define APP20 A(KC_F20)
 
+// Right hand
 #define APP21 C(KC_F11)
 #define APP22 C(KC_F12)
 #define APP23 C(KC_F13)
