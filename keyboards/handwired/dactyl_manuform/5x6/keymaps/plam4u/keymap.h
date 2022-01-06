@@ -71,8 +71,10 @@ void thumb1_reset(qk_tap_dance_state_t *state, void *user_data);
 #define DEL_RS1 LT(_RAISE1, KC_DEL)
 #define LOWER2 TO(_LOWER2)
 #define LOWER3 TO(_LOWER3)
+#define LOWER4 TO(_LOWER4)
 #define RAISE2 TO(_RAISE2)
 #define RAISE3 TO(_RAISE3)
+#define RAISE4 TO(_RAISE4)
 #define BOTH1 MO(_BOTH1)
 
 // Apps
@@ -92,6 +94,17 @@ void thumb1_reset(qk_tap_dance_state_t *state, void *user_data);
 #define APP08 S(KC_F18)
 #define APP09 S(KC_F19)
 #define APP10 S(KC_F20)
+
+#define APP11 A(KC_F11)
+#define APP12 A(KC_F12)
+#define APP13 A(KC_F13)
+#define APP14 A(KC_F14)
+#define APP15 A(KC_F15)
+#define APP16 A(KC_F16)
+#define APP17 A(KC_F17)
+#define APP18 A(KC_F18)
+#define APP19 A(KC_F19)
+#define APP20 A(KC_F20)
 
 // Miscellaneous
 #define CUT G(KC_X)
