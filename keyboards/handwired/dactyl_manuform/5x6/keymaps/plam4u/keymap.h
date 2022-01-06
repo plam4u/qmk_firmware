@@ -130,6 +130,7 @@ void thumb1_reset(qk_tap_dance_state_t *state, void *user_data);
 #define ENT_CMD CMD_T(KC_ENT) 
 #define ENT_ALT ALT_T(KC_ENT) 
 #define BSP_SFT RSFT_T(KC_BSPC) 
+#define ACCENT A(KC_E)
 
 // One Shot Modifiers
 #define OS_LCTL OSM(MOD_LCTL)
