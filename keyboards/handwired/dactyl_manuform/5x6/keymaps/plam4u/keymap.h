@@ -111,11 +111,13 @@ void thumb1_reset(qk_tap_dance_state_t *state, void *user_data);
 #define APP23 C(KC_F13)
 #define APP24 C(KC_F14)
 #define APP25 C(KC_F15)
+
 #define APP26 C(KC_F16)
 #define APP27 C(KC_F17)
 #define APP28 C(KC_F18)
 #define APP29 C(KC_F19)
 #define APP30 C(KC_F20)
+
 #define APP31 C(KC_F21)
 #define APP32 C(KC_F22)
 #define APP33 C(KC_F23)
