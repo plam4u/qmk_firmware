@@ -35,7 +35,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * │ENT_HPR│   Q   ├───────┼───────┼───────┼───────┤ ├───────┼───────┼───────┼───────┤   P   │  :   │
  * ├───────┼───────┤   S   │   D   │   F   │   G   │ │   H   │   J   │   K   │   L   ├───────┼──────┤
  * │ESC_MEH│   A   ├───────┼───────┼───────┼───────┤ ├───────┼───────┼───────┼───────┤  : ;  │ ' "  │
- * ├───────┼───────┤   X   │   C   │   V   │   B   │ │   N   │   M   │  , <  │  . >  ├───────┼──────┤
+ * ├───────┼───────┤TD_XCUT│TD_CCPY│TD_VPST│   B   │ │   N   │   M   │  , <  │  . >  ├───────┼──────┤
  * │  ` ~  │  Z ⎈  ├───────┼───────┼───────┴───────┘ └───────┴───────┼───────┼───────┤  / ⎈  │ \ |  │
  * └───────┴───────┤SPACE_L│SPACE_R│                                 │  = +  │  - _  ├───────┴──────┘
  *                 └───────┴───────┘                                 └───────┴───────┘
@@ -51,7 +51,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
         ENT_HPR, KC_Q   , KC_W   , KC_E   , KC_R   , KC_T   ,                       KC_Y   , KC_U   , KC_I   , KC_O   , KC_P    , KC_COLN,
         ESC_MEH, KC_A   , KC_S   , KC_D   , KC_F   , KC_G   ,                       KC_H   , KC_J   , KC_K   , KC_L   , KC_SCLN , KC_QUOT,
-        KC_GRV , CTL_Z  , KC_X   , KC_C   , KC_V   , KC_B   ,                       KC_N   , KC_M   , KC_COMM, KC_DOT , CTL_SL  , KC_BSLS,
+        KC_GRV , CTL_Z  , TD_XCUT, TD_CCPY, TD_VPST, KC_B   ,                       KC_N   , KC_M   , KC_COMM, KC_DOT , CTL_SL  , KC_BSLS,
                           SPACE_L, SPACE_R,                                                           KC_EQL , KC_MINS,
                                             ESC_LW1, SPC_SFT,                       ENT_SFT, BSP_RS1,
                                             BSP_SFT, TAB_CMD,                       OS_RCMD, OS_RSFT,
@@ -347,6 +347,48 @@ void dance_accent_o(qk_tap_dance_state_t *state, void *user_data) {
 }
 
 // ============================================================================
+// ================================= TD XCV ===================================
+static td_tap_t xcv_td_state = {
+    .state = TD_NONE
+};
+void dance_x_cut(qk_tap_dance_state_t *state, void *user_data) {
+    xcv_td_state.state = cur_dance(state);
+    switch (xcv_td_state.state) {
+        case TD_SINGLE_HOLD:
+            tap_code16(LCMD(KC_X));
+            break;
+        default: 
+            tap_code(KC_X);
+    }
+    reset_tap_dance(state);
+    xcv_td_state.state = TD_NONE;
+}
+void dance_c_copy(qk_tap_dance_state_t *state, void *user_data) {
+    xcv_td_state.state = cur_dance(state);
+    switch (xcv_td_state.state) {
+        case TD_SINGLE_HOLD:
+            tap_code16(LCMD(KC_C));
+            break;
+        default: 
+            tap_code(KC_C);
+    }
+    reset_tap_dance(state);
+    xcv_td_state.state = TD_NONE;
+}
+void dance_v_paste(qk_tap_dance_state_t *state, void *user_data) {
+    xcv_td_state.state = cur_dance(state);
+    switch (xcv_td_state.state) {
+        case TD_SINGLE_HOLD:
+            tap_code16(LCMD(KC_V));
+            break;
+        default: 
+            tap_code(KC_V);
+    }
+    reset_tap_dance(state);
+    xcv_td_state.state = TD_NONE;
+}
+
+// ============================================================================
 // =============================== TD SPACE ===================================
 static td_tap_t spc_td_state = {
     .state = TD_NONE
@@ -471,6 +513,9 @@ qk_tap_dance_action_t tap_dance_actions[] = {
     [TD_ACCENT_U] = ACTION_TAP_DANCE_FN(dance_accent_u),
     [TD_ACCENT_I] = ACTION_TAP_DANCE_FN(dance_accent_i),
     [TD_ACCENT_O] = ACTION_TAP_DANCE_FN(dance_accent_o),
+    [TD_X_CUT] = ACTION_TAP_DANCE_FN(dance_x_cut),
+    [TD_C_COPY] = ACTION_TAP_DANCE_FN(dance_c_copy),
+    [TD_V_PASTE] = ACTION_TAP_DANCE_FN(dance_v_paste),
     [TD_CLN_SCLN] = ACTION_TAP_DANCE_DOUBLE(KC_COLN, KC_SCLN),
     [TD_SPC_ENT] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, spc_finished, spc_reset),
     [TD_TR_LEFT] = ACTION_TAP_DANCE_FN(dance_toprow_left),

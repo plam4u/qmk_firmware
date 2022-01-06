@@ -30,6 +30,9 @@ enum {
     TD_TR_RIGHT,
     TD_COPY_PASTE,
     TD_THUMB1,
+    TD_X_CUT,
+    TD_C_COPY,
+    TD_V_PASTE,
 };
 #define TD_AA TD(TD_ACCENT_A)
 #define TD_AE TD(TD_ACCENT_E)
@@ -41,6 +44,12 @@ void dance_accent_e(qk_tap_dance_state_t *state, void *user_data);
 void dance_accent_u(qk_tap_dance_state_t *state, void *user_data);
 void dance_accent_i(qk_tap_dance_state_t *state, void *user_data);
 void dance_accent_o(qk_tap_dance_state_t *state, void *user_data);
+#define TD_XCUT TD(TD_X_CUT)
+#define TD_CCPY TD(TD_C_COPY)
+#define TD_VPST TD(TD_V_PASTE)
+void dance_x_cut(qk_tap_dance_state_t *state, void *user_data);
+void dance_c_copy(qk_tap_dance_state_t *state, void *user_data);
+void dance_v_paste(qk_tap_dance_state_t *state, void *user_data);
 #define TD_CLN TD(TD_CLN_SCLN)
 #define TD_SPC TD(TD_SPC_ENT)
 void spc_finished(qk_tap_dance_state_t *state, void *user_data);
