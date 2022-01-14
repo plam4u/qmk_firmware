@@ -498,14 +498,20 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case TD_LWR1:
             if (!record->event.pressed) {
                 unregister_code(KC_LCMD);
-                layer_clear();
+                layer_off(_LOWER1);
+                layer_off(_LOWER2);
+                layer_off(_LOWER3);
+                layer_off(_LOWER4);
             }
             break;
 
         case BSP_RS1:
             if (!record->event.pressed) {
-                layer_clear();
-            }
+                layer_off(_RAISE1);
+                layer_off(_RAISE2);
+                layer_off(_RAISE3);
+                layer_off(_RAISE4);
+}
             break;
 
        // case DM_REC1:
