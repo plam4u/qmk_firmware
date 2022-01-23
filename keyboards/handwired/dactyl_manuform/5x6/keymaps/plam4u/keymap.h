@@ -69,6 +69,7 @@ void thumb1_reset(qk_tap_dance_state_t *state, void *user_data);
 #define ESC_LW1 LT(_LOWER1, KC_ESC)
 #define BSP_RS1 LT(_RAISE1, KC_BSPC)
 #define DEL_RS1 LT(_RAISE1, KC_DEL)
+#define SCL_LW3 LT(_LOWER3, KC_SCLN)
 #define LOWER2 TO(_LOWER2)
 #define LOWER3 TO(_LOWER3)
 #define LOWER4 TO(_LOWER4)

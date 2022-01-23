@@ -34,7 +34,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ├───────┼───────┤   W   │   E   │   R   │   T   │ │   Y   │   U   │   I   │   O   ├───────┼──────┤
  * │ENT_HPR│   Q   ├───────┼───────┼───────┼───────┤ ├───────┼───────┼───────┼───────┤   P   │  :   │
  * ├───────┼───────┤   S   │   D   │   F   │   G   │ │   H   │   J   │   K   │   L   ├───────┼──────┤
- * │ESC_MEH│   A   ├───────┼───────┼───────┼───────┤ ├───────┼───────┼───────┼───────┤  : ;  │ ' "  │
+ * │ESC_MEH│   A   ├───────┼───────┼───────┼───────┤ ├───────┼───────┼───────┼───────┤SCL_LW3│ ' "  │
  * ├───────┼───────┤   X   │   C   │   V   │   B   │ │   N   │   M   │  , <  │  . >  ├───────┼──────┤
  * │  ` ~  │  Z ⎈  ├───────┼───────┼───────┴───────┘ └───────┴───────┼───────┼───────┤  / ⎈  │ \ |  │
  * └───────┴───────┤SPACE_L│SPACE_R│                                 │  = +  │  - _  ├───────┴──────┘
@@ -50,7 +50,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         TD_TR_L, TR1    , TR2    , TR3    , TR4    , TR5    ,        TR6    , TR7    , TR8    , TR9    , TR10    , TD_TR_R,
 
         ENT_HPR, KC_Q   , KC_W   , KC_E   , KC_R   , KC_T   ,        KC_Y   , KC_U   , KC_I   , KC_O   , KC_P    , KC_COLN,
-        ESC_MEH, KC_A   , KC_S   , KC_D   , KC_F   , KC_G   ,        KC_H   , KC_J   , KC_K   , KC_L   , KC_SCLN , KC_QUOT,
+        ESC_MEH, KC_A   , KC_S   , KC_D   , KC_F   , KC_G   ,        KC_H   , KC_J   , KC_K   , KC_L   , SCL_LW3 , KC_QUOT,
         KC_GRV , CTL_Z  , KC_X   , KC_C   , KC_V   , KC_B   ,        KC_N   , KC_M   , KC_COMM, KC_DOT , CTL_SL  , KC_BSLS,
                           SPACE_L, SPACE_R,                                            KC_EQL , KC_MINS,
                                             ESC_LW1, SPC_SFT,        ENT_SFT, BSP_RS1,
