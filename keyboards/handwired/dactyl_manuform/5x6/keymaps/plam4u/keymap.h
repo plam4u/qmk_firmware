@@ -67,6 +67,7 @@ void thumb1_reset(qk_tap_dance_state_t *state, void *user_data);
 
 // Layer keys
 #define ESC_LW1 LT(_LOWER1, KC_ESC)
+#define ENT_LW3 LT(_LOWER3, KC_ENT)
 #define BSP_RS1 LT(_RAISE1, KC_BSPC)
 #define DEL_RS1 LT(_RAISE1, KC_DEL)
 #define SCL_LW3 LT(_LOWER3, KC_SCLN)
@@ -84,6 +85,7 @@ void thumb1_reset(qk_tap_dance_state_t *state, void *user_data);
 #define QUITAPP G(KC_Q)
 #define HIDEAPP MEH(KC_G)
 #define MEETING HYPR(KC_F16)
+#define APPWINS G(KC_GRV)
 
 // Left hand
 #define APP01 S(KC_F11)
