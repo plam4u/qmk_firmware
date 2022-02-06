@@ -121,7 +121,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /*                 ┌───────┬───────┬───────┬───────┐ ┌───────┬───────┬───────┬───────┐
  * ┌───────┬───────┤       │       │       │       │ │       │       │       │       ├───────┬──────┐
  * │       │       ├───────┼───────┼───────┼───────┤ ├───────┼───────┼───────┼───────┤       │      │
- * ├───────┼───────┤ BTN2  │ BTN3  │ BTN1  │TD_CYPE│ │ WH_R  │WHEEL ↓│WHEEL ↑│ WH_L  ├───────┼──────┤
+ * ├───────┼───────┤ BTN2  │ BTN3  │ BTN1  │TD_CYPE│ │ WH_R  │WHEEL ↑│WHEEL ↓│ WH_L  ├───────┼──────┤
  * │       │       ├───────┼───────┼───────┼───────┤ ├───────┼───────┼───────┼───────┤ WH_L  │      │
  * ├───────┼───────┤ ACL2  │ ACL0  │ ACL1  │       │ │MOUSE ←│MOUSE ↓│MOUSE ↑│MOUSE →├───────┼──────┤
  * │       │       ├───────┼───────┼───────┼───────┤ ├───────┼───────┼───────┼───────┤ WH_L  │      │
@@ -139,7 +139,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_LOWER3] = LAYOUT_5x6(
         _______, _______, _______, _______, _______, _______,        _______, _______, _______, _______, _______, _______,
 
-        _______, _______, KC_BTN2, KC_BTN3, KC_BTN1, TD_CYPE,        KC_WH_R, KC_WH_D, KC_WH_U, KC_WH_L, KC_WH_L, _______,
+        _______, _______, KC_BTN2, KC_BTN3, KC_BTN1, TD_CYPE,        KC_WH_R, KC_WH_U, KC_WH_D, KC_WH_L, KC_WH_L, _______,
         _______, _______, KC_ACL2, KC_ACL0, KC_ACL1, _______,        KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, KC_WH_L, _______,
         _______, OS_LCTL, OS_LALT, OS_LCMD, OS_LSFT, KC_BTN3,        _______, OS_RSFT, OS_RCMD, OS_LALT, OS_RCTL, _______, 
                           _______, _______,                                            _______, _______,
