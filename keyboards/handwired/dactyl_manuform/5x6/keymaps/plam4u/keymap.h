@@ -78,6 +78,8 @@ void thumb1_reset(qk_tap_dance_state_t *state, void *user_data);
 #define RAISE3 TO(_RAISE3)
 #define RAISE4 TO(_RAISE4)
 #define BOTH1 MO(_BOTH1)
+#define DF_QWR1 DF(_QWERTY)
+#define DF_QWR2 DF(_QWERTY_DESIGN)
 
 // Apps
 #define ALFRED G(KC_SPC)
