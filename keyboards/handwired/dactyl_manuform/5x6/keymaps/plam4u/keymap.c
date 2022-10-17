@@ -210,7 +210,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /*                 ┌───────┬───────┬───────┬───────┐ ┌───────┬───────┬───────┬───────┐
  * ┌───────┬───────┤       │       │       │       │ │       │       │       │       ├───────┬──────┐
  * │       │       ├───────┼───────┼───────┼───────┤ ├───────┼───────┼───────┼───────┤       │      │
- * ├───────┼───────┤   @   │   {   │   }   │   ^   │ │SG_LBRC│ PLAY  │ MUTE  │SG_RBRC├───────┼──────┤
+ * ├───────┼───────┤   @   │   {   │   }   │   ^   │ │SG_LBRC│ PLAY  │ MNXT  │SG_RBRC├───────┼──────┤
  * │   ?   │   %   ├───────┼───────┼───────┼───────┤ ├───────┼───────┼───────┼───────┤       │      │
  * ├───────┼───────┤   &   │   (   │   )   │   $   │ │   ←   │   ↓   │   ↑   │   →   ├───────┼──────┤
  * │   !   │   _   ├───────┼───────┼───────┼───────┤ ├───────┼───────┼───────┼───────┤       │      │
@@ -228,7 +228,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_RAISE1] = LAYOUT_5x6(
         _______, _______, _______, _______, _______, _______,        _______, _______, _______, _______, _______, _______,
 
-        KC_QUES, KC_PERC, KC_AT  , KC_LCBR, KC_RCBR, KC_CIRC,        SG_LBRC, KC_MPLY, KC_MUTE, SG_RBRC, _______, _______,
+        KC_QUES, KC_PERC, KC_AT  , KC_LCBR, KC_RCBR, KC_CIRC,        SG_LBRC, KC_MPLY, KC_MNXT, SG_RBRC, _______, _______,
         KC_EXLM, KC_UNDS, KC_AMPR, KC_LPRN, KC_RPRN, KC_DLR ,        KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT, _______, _______,
         KC_TILD, KC_HASH, KC_PIPE, KC_LBRC, KC_RBRC, KC_ASTR,        _______, KC_BSPC, KC_ENT , KC_DEL , _______, _______,
                           _______, _______,                                            RAISE2 , RAISE3 ,
