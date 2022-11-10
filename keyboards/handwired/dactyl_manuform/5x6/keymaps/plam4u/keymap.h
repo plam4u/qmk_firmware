@@ -149,6 +149,8 @@ void thumb1_reset(qk_tap_dance_state_t *state, void *user_data);
 // Combinations
 #define CTL_Z CTL_T(KC_Z)
 #define CTL_SL RCTL_T(KC_SLSH)
+#define ALT_TLD ALT_T(KC_GRV)
+#define ALT_BSL ALT_T(KC_BSLS)
 #define G_LBRC G(KC_LBRC)
 #define G_RBRC G(KC_RBRC)
 #define BACK G_LBRC
