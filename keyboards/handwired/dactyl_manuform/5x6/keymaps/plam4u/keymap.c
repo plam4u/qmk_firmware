@@ -91,7 +91,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ┌───────┬───────┤       │       │       │       │ │       │       │       │       ├───────┬──────┐
  * │       │       ├───────┼───────┼───────┼───────┤ ├───────┼───────┼───────┼───────┤       │      │
  * ├───────┼───────┤TABPREV│ BACK  │FORWARD│TABNEXT│ │  / ?  │   7   │   8   │   9   ├───────┼──────┤
- * │MEETING│       ├───────┼───────┼───────┼───────┤ ├───────┼───────┼───────┼───────┤   0   │RESET │
+ * │MEETING│       ├───────┼───────┼───────┼───────┤ ├───────┼───────┼───────┼───────┤   0   │      │
  * ├───────┼───────┤ACCENT │APPPREV│APPNEXT│HIDEAPP│ │   *   │   4   │   5   │   6   ├───────┼──────┤
  * │ ITERM │ALFRED ├───────┼───────┼───────┼───────┤ ├───────┼───────┼───────┼───────┤   :   │DF_QWR│
  * ├───────┼───────┤LALT ⎇ │ LCMD  │LSFT ⇧ │CLIPBRD│ │  = +  │   1   │   2   │   3   ├───────┼──────┤
@@ -108,7 +108,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_LOWER1] = LAYOUT_5x6(
         _______, _______, _______, _______, _______, _______,        _______, _______, _______, _______, _______, _______,
 
-        MEETING, _______, TABPREV, BACK   , FORWARD, TABNEXT,        KC_SLSH, KC_7   , KC_8   , KC_9   , KC_0   , RESET  ,
+        MEETING, _______, TABPREV, BACK   , FORWARD, TABNEXT,        KC_SLSH, KC_7   , KC_8   , KC_9   , KC_0   , _______,
         ITERM  , ALFRED ,  ACCENT, APPPREV, APPNEXT, HIDEAPP,        KC_ASTR, KC_4   , KC_5   , KC_6   , KC_COLN, DF_QWR1,
         APPWINS, KC_LCTL, KC_LALT, KC_LCMD, KC_LSFT, CLIPBRD,        KC_EQL , KC_1   , KC_2   , KC_3   , KC_DOT , DF_QWR2,
                           LOWER4 , LOWER3 ,                                            KC_PLUS, KC_MINS,
