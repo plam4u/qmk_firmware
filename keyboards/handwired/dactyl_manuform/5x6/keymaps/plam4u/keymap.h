@@ -80,6 +80,7 @@ void thumb1_reset(qk_tap_dance_state_t *state, void *user_data);
 #define BOTH1 MO(_BOTH1)
 #define DF_QWR1 DF(_QWERTY)
 #define DF_QWR2 DF(_QWERTY_DESIGN)
+#define DF_QWR3 DF(_GAMING)
 
 // Apps
 #define ALFRED G(KC_SPC)
@@ -167,12 +168,12 @@ void thumb1_reset(qk_tap_dance_state_t *state, void *user_data);
 #define ESC_SFT SFT_T(KC_ESC)
 #define ESC_MEH MEH_T(KC_ESC)
 #define ENT_HPR HYPR_T(KC_ENT)
-#define SPC_SFT LSFT_T(KC_SPC) 
-#define ENT_SFT RSFT_T(KC_ENT) 
-#define ENT_CTL CTL_T(KC_ENT) 
-#define ENT_CMD CMD_T(KC_ENT) 
-#define ENT_ALT ALT_T(KC_ENT) 
-#define BSP_SFT RSFT_T(KC_BSPC) 
+#define SPC_SFT LSFT_T(KC_SPC)
+#define ENT_SFT RSFT_T(KC_ENT)
+#define ENT_CTL CTL_T(KC_ENT)
+#define ENT_CMD CMD_T(KC_ENT)
+#define ENT_ALT ALT_T(KC_ENT)
+#define BSP_SFT RSFT_T(KC_BSPC)
 #define ACCENT A(KC_E)
 #define CENTER MEH(KC_I)
 
