@@ -81,6 +81,13 @@ void thumb1_reset(qk_tap_dance_state_t *state, void *user_data);
 #define DF_QWR1 DF(_QWERTY)
 #define DF_QWR2 DF(_QWERTY_DESIGN)
 #define DF_QWR3 DF(_GAMING)
+#define DF_QWR4 DF(_DOTA)
+
+// Dota
+#define DOTA_L LT(_DOTA_L, KC_ESC)
+#define DOTA_R LT(_DOTA_R, KC_SPC)
+#define DOTA_S SFT_T(KC_F1)
+#define DOTA_AT SFT_T(KC_F2)
 
 // Apps
 #define ALFRED G(KC_SPC)
