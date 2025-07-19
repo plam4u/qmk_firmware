@@ -10,18 +10,20 @@
 #define HOLD_ON_OTHER_KEY_PRESS_PER_KEY
 #define TAPPING_FORCE_HOLD_PER_KEY
 
-#define MK_KINETIC_SPEED
+// MOUSE KEYS
+
+#define MK_3_SPEED
 #undef MOUSEKEY_MOVE_DELTA
 #define MOUSEKEY_MOVE_DELTA 10
 #define MOUSEKEY_INITIAL_SPEED 50
 
-#define MK_C_OFFSET_UNMOD	4
+#define MK_C_OFFSET_UNMOD	12
 #define MK_C_INTERVAL_UNMOD	16
-#define MK_C_OFFSET_0	    12
+#define MK_C_OFFSET_0	    16
 #define MK_C_INTERVAL_0	    16
-#define MK_C_OFFSET_1	    32
+#define MK_C_OFFSET_1	    48
 #define MK_C_INTERVAL_1	    16
-#define MK_C_OFFSET_2	    64
+#define MK_C_OFFSET_2	    96
 #define MK_C_INTERVAL_2	    16
 
 #define MK_W_OFFSET_UNMOD	1
