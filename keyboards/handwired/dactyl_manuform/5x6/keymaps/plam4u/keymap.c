@@ -109,29 +109,29 @@ tap_dance_action_t tap_dance_actions[] = {
 #endif
 
 #ifdef LEADER_ENABLE
-void leader_start_user(void) {
-    // Do something when the leader key is pressed
-}
-void leader_end_user(void) {
-    if (leader_sequence_one_key(KC_F)) {
-        SEND_STRING("QMK is awesome.");
-    }
-    else if (leader_sequence_two_keys(KC_D, KC_D)) {
-        SEND_STRING(SS_LCTL("a") SS_LCTL("c"));
-    }
-    else if (leader_sequence_three_keys(KC_D, KC_D, KC_S)) {
-        SEND_STRING("https://start.duckduckgo.com\n");
-    }
-    else if (leader_sequence_two_keys(KC_A, KC_S)) {
-        tap_code16(LGUI(KC_S));
-    }
-}
+// void leader_start_user(void) {
+//     // Do something when the leader key is pressed
+// }
+// void leader_end_user(void) {
+//     if (leader_sequence_one_key(KC_F)) {
+//         SEND_STRING("QMK is awesome.");
+//     }
+//     else if (leader_sequence_two_keys(KC_D, KC_D)) {
+//         SEND_STRING(SS_LCTL("a") SS_LCTL("c"));
+//     }
+//     else if (leader_sequence_three_keys(KC_D, KC_D, KC_S)) {
+//         SEND_STRING("https://start.duckduckgo.com\n");
+//     }
+//     else if (leader_sequence_two_keys(KC_A, KC_S)) {
+//         tap_code16(LGUI(KC_S));
+//     }
+// }
 #endif
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_QWERTY] = LAYOUT_5x6(
-        QK_LEAD, REDO   , CUT    , COPY   , PASTE  , UNDO   ,        _______, _______, _______, _______, _______,  QK_LEAD,
+        QK_LEAD, REDO   , CUT    , COPY   , PASTE  , UNDO   ,        _______, _______, C(KC_C), _______, _______,  QK_LEAD,
 
         ENT_HPR, KC_Q   , KC_W   , KC_E   , KC_R   , KC_T   ,        KC_Y   , KC_U   , KC_I   , KC_O   , KC_P    , KC_COLN,
         ESC_MEH, KC_A   , KC_S   , KC_D   , KC_F   , KC_G   ,        KC_H   , KC_J   , KC_K   , KC_L   , TD_CLN  , KC_QUOT,
