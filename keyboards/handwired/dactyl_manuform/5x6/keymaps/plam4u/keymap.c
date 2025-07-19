@@ -36,6 +36,8 @@
 #define CUT     G(KC_X)
 #define COPY    G(KC_C)
 #define PASTE   G(KC_P)
+#define UNDO    G(KC_Z)
+#define REDO    LSG(KC_Z)
 
 // Combinations
 #define CTL_Z   CTL_T(KC_Z)
@@ -95,12 +97,12 @@ enum layer_names {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_QWERTY] = LAYOUT_5x6(
-        _______, PB_10  , CUT    , COPY   , PASTE  , _______,        _______, _______, _______, _______, _______,  _______,
+        _______, REDO   , CUT    , COPY   , PASTE  , UNDO   ,        _______, _______, _______, _______, _______,  _______,
 
         ENT_HPR, KC_Q   , KC_W   , KC_E   , KC_R   , KC_T   ,        KC_Y   , KC_U   , KC_I   , KC_O   , KC_P    , KC_COLN,
         ESC_MEH, KC_A   , KC_S   , KC_D   , KC_F   , KC_G   ,        KC_H   , KC_J   , KC_K   , KC_L   , KC_SCLN , KC_QUOT,
         ALT_TLD, CTL_Z  , KC_X   , KC_C   , KC_V   , KC_B   ,        KC_N   , KC_M   , KC_COMM, KC_DOT , CTL_SL  , ALT_BSL,
-                          _______, _______,                                            KC_EQL , KC_MINS,
+                          PB_10  , _______,                                            KC_EQL , KC_MINS,
                                             ESC_LW1, KC_SPC ,        ENT_RS2, BSP_RS1,
                                             ENT_CTL, TAB_SFT,        OS_RSFT, OS_RCTL,
                                             OS_LALT, BSP_CMD,        OS_RCMD, OS_LALT
