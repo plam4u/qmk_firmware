@@ -31,18 +31,38 @@ enum layer_names {
 #define APPWINS G(KC_GRV)
 #define APPQUIT G(KC_Q)
 
-// Left hand
 #define APP01   S(KC_F11)
 #define APP02   S(KC_F12)
 #define APP03   S(KC_F13)
 #define APP04   S(KC_F14)
 #define APP05   S(KC_F15)
-
 #define APP06   S(KC_F16)
 #define APP07   S(KC_F17)
 #define APP08   S(KC_F18)
 #define APP09   S(KC_F19)
 #define APP10   S(KC_F20)
+
+#define APP11   A(KC_F11)
+#define APP12   A(KC_F12)
+#define APP13   A(KC_F13)
+#define APP14   A(KC_F14)
+#define APP15   A(KC_F15)
+#define APP16   A(KC_F16)
+#define APP17   A(KC_F17)
+#define APP18   A(KC_F18)
+#define APP19   A(KC_F19)
+#define APP20   A(KC_F20)
+
+#define APP21   C(KC_F11)
+#define APP22   C(KC_F12)
+#define APP23   C(KC_F13)
+#define APP24   C(KC_F14)
+#define APP25   C(KC_F15)
+#define APP26   C(KC_F16)
+#define APP27   C(KC_F17)
+#define APP28   C(KC_F18)
+#define APP29   C(KC_F19)
+#define APP30   C(KC_F20)
 
 // Miscellaneous
 #define CLIPBRD HYPR(KC_C)
@@ -76,14 +96,6 @@ enum layer_names {
 #define ACCENT  A(KC_E)
 #define CENTER  MEH(KC_I)
 
-// One Shot Modifiers
-#define OS_LCTL OSM(MOD_LCTL)
-#define OS_RCTL OSM(MOD_RCTL)
-#define OS_LSFT OSM(MOD_LSFT)
-#define OS_RSFT OSM(MOD_RSFT)
-#define OS_LALT OSM(MOD_LALT)
-#define OS_LCMD OSM(MOD_LGUI)
-#define OS_RCMD OSM(MOD_RGUI)
 #endif
 
 #ifdef TAP_DANCE_ENABLE
@@ -127,7 +139,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                           KC_LBRC, KC_RBRC,                                            KC_EQL , KC_MINS,
                                             ESC_LW1, KC_SPC ,        ENT_RS2, BSP_RS1,
                                             ENT_CTL, TAB_SFT,        OS_RSFT, OS_RCTL,
-                                            OS_LALT, BSP_CMD,        OS_RCMD, OS_LALT
+                                            OS_LALT, BSP_CMD,        OS_RGUI, OS_LALT
     ),
 
     [_LOWER1] = LAYOUT_5x6(
@@ -135,7 +147,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
         FOCUS  , APPQUIT, TABPREV, BACK   , FORWARD, TABNEXT,        KC_SLSH, KC_7   , KC_8   , KC_9   , KC_0   , _______,
         ITERM  , ALFRED , ACCENT , APPPREV, APPNEXT, HIDEAPP,        KC_ASTR, KC_4   , KC_5   , KC_6   , KC_COLN, _______,
-        APPWINS, KC_LCTL, KC_LSFT, KC_LALT, KC_LCMD, CLIPBRD,        KC_EQL , KC_1   , KC_2   , KC_3   , KC_DOT , _______,
+        APPWINS, OS_LCTL, OS_LSFT, OS_LALT, OS_LGUI, CLIPBRD,        KC_EQL , KC_1   , KC_2   , KC_3   , KC_DOT , _______,
                           PB_10  , G(KC_A),                                            KC_PLUS, KC_MINS,
                                             _______, LOWER2 ,        _______, _______,
                                             _______, _______,        _______, _______,
@@ -147,7 +159,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
         _______, APP01  , APP02  , APP03  , APP04  , APP05  ,        DM_PLY1, KC_F7  , KC_F8  , KC_F9  , KC_F12 , _______,
         _______, APP06  , APP07  , APP08  , APP09  , APP10  ,        DM_RSTP, KC_F4  , KC_F5  , KC_F6  , KC_F11 , _______,
-        _______, OS_LCTL, OS_LSFT, OS_LALT, OS_LCMD, CENTER ,        DM_REC1, KC_F1  , KC_F2  , KC_F3  , KC_F10 , _______,
+        _______, OS_LCTL, OS_LSFT, OS_LALT, OS_LGUI, CENTER ,        DM_REC1, KC_F1  , KC_F2  , KC_F3  , KC_F10 , _______,
                           _______, _______,                                            _______, _______,
                                             _______, _______,        _______, _______,
                                             _______, _______,        _______, _______,
@@ -169,9 +181,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_RAISE2] = LAYOUT_5x6(
         _______, _______, _______, _______, _______, _______,        _______, _______, _______, _______, _______, _______,
 
-        _______, _______, _______, _______, _______, _______,        _______, KC_BTN1, KC_BTN3, KC_BTN2, _______, _______,
+        _______, APP11  , APP12  , APP13  , APP14  , APP15  ,        _______, KC_BTN1, KC_BTN3, KC_BTN2, _______, _______,
         _______, KC_ACL2, KC_ACL2, KC_ACL1, KC_ACL0, _______,        KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, _______, _______,
-        _______, _______, _______, _______, _______, _______,        KC_WH_R, KC_WH_U, KC_WH_D, KC_WH_L, _______, _______,
+        _______, APP16  , APP17  , APP18  , APP19  , APP20  ,        KC_WH_R, KC_WH_U, KC_WH_D, KC_WH_L, _______, _______,
                           _______, _______,                                            _______, _______,
                                             _______, _______,        _______, _______,
                                             _______, _______,        _______, _______,
