@@ -16,6 +16,7 @@
 #define HIDEAPP MEH(KC_G)
 #define MEETING HYPR(KC_F16)
 #define APPWINS G(KC_GRV)
+#define APPQUIT G(KC_Q)
 
 // Left hand
 #define APP01   S(KC_F11)
@@ -31,7 +32,7 @@
 #define APP10   S(KC_F20)
 
 // Miscellaneous
-#define CLIPBRD LSG(KC_C)
+#define CLIPBRD HYPR(KC_C)
 #define CUT     G(KC_X)
 #define COPY    G(KC_C)
 #define PASTE   G(KC_P)
@@ -106,10 +107,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     [_LOWER1] = LAYOUT_5x6(
-        SS_ASD , _______, _______, _______, _______, _______,        _______, _______, _______, _______, _______, _______,
+        SS_ASD , G(KC_1), G(KC_2), G(KC_3), G(KC_4), G(KC_5),        G(KC_6), G(KC_7), G(KC_8), G(KC_9), G(KC_0), _______,
 
-        MEETING, _______, TABPREV, BACK   , FORWARD, TABNEXT,        KC_SLSH, KC_7   , KC_8   , KC_9   , KC_0   , _______,
-        ITERM  , ALFRED ,  ACCENT, APPPREV, APPNEXT, HIDEAPP,        KC_ASTR, KC_4   , KC_5   , KC_6   , KC_COLN, _______,
+        MEETING, APPQUIT, TABPREV, BACK   , FORWARD, TABNEXT,        KC_SLSH, KC_7   , KC_8   , KC_9   , KC_0   , _______,
+        ITERM  , ALFRED , ACCENT , APPPREV, APPNEXT, HIDEAPP,        KC_ASTR, KC_4   , KC_5   , KC_6   , KC_COLN, _______,
         APPWINS, KC_LCTL, KC_LALT, KC_LCMD, KC_LSFT, CLIPBRD,        KC_EQL , KC_1   , KC_2   , KC_3   , KC_DOT , _______,
                           _______, _______,                                            KC_PLUS, KC_MINS,
                                             _______, LOWER2 ,        _______, _______,
