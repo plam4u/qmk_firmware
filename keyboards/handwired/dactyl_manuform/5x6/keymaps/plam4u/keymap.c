@@ -95,6 +95,18 @@ enum layer_names {
 #define BSP_SFT RSFT_T(KC_BSPC)
 #define ACCENT  A(KC_E)
 #define CENTER  MEH(KC_I)
+#define CTRL_C  C(KC_C)
+#define CMD_01  G(KC_1)
+#define CMD_02  G(KC_2)
+#define CMD_03  G(KC_3)
+#define CMD_04  G(KC_4)
+#define CMD_05  G(KC_5)
+#define CMD_06  G(KC_6)
+#define CMD_07  G(KC_7)
+#define CMD_08  G(KC_8)
+#define CMD_09  G(KC_9)
+#define CMD_00  G(KC_0)
+#define CMD_A   G(KC_A)
 
 #endif
 
@@ -131,7 +143,7 @@ tap_dance_action_t tap_dance_actions[] = {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_QWERTY] = LAYOUT_5x6(
-        QK_LEAD, REDO   , CUT    , COPY   , PASTE  , UNDO   ,        _______, _______, C(KC_C), _______, _______,  QK_LEAD,
+        QK_LEAD, REDO   , CUT    , COPY   , PASTE  , UNDO   ,        _______, _______, CTRL_C , _______, _______,  QK_LEAD,
 
         ENT_HPR, KC_Q   , KC_W   , KC_E   , KC_R   , KC_T   ,        KC_Y   , KC_U   , KC_I   , KC_O   , KC_P    , KC_COLN,
         ESC_MEH, KC_A   , KC_S   , KC_D   , KC_F   , KC_G   ,        KC_H   , KC_J   , KC_K   , KC_L   , TD_CLN  , KC_QUOT,
@@ -143,12 +155,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     [_LOWER1] = LAYOUT_5x6(
-        SS_ASD , G(KC_1), G(KC_2), G(KC_3), G(KC_4), G(KC_5),        G(KC_6), G(KC_7), G(KC_8), G(KC_9), G(KC_0), QK_BOOT,
+        SS_ASD , CMD_01 , CMD_02 , CMD_03 , CMD_04 , CMD_05 ,        CMD_06 , CMD_07 , CMD_08 , CMD_09 , CMD_00 , QK_BOOT,
 
         FOCUS  , APPQUIT, TABPREV, BACK   , FORWARD, TABNEXT,        KC_SLSH, KC_7   , KC_8   , KC_9   , KC_0   , _______,
         ITERM  , ALFRED , ACCENT , APPPREV, APPNEXT, HIDEAPP,        KC_ASTR, KC_4   , KC_5   , KC_6   , KC_COLN, _______,
         APPWINS, OS_LCTL, OS_LSFT, OS_LALT, OS_LGUI, CLIPBRD,        KC_EQL , KC_1   , KC_2   , KC_3   , KC_DOT , _______,
-                          PB_10  , G(KC_A),                                            KC_PLUS, KC_MINS,
+                          PB_10  , CMD_A  ,                                            KC_PLUS, KC_MINS,
                                             _______, LOWER2 ,        _______, _______,
                                             _______, _______,        _______, _______,
                                             _______, _______,        _______, _______
