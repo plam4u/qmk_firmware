@@ -151,9 +151,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 };
 
-// ----------------------------------------------------------------------------
-// ------------------------------- PROCESS ------------------------------------
-
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
     switch (keycode) {
@@ -232,11 +229,14 @@ bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
 
 bool get_tapping_force_hold(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        // commented out to prioritize SPACE key
-        // pressing SPACE twice will trigger and hold SPACE
-        // case SPC_SFT:
+        case SPC_SFT:
         case ENT_SFT:
             return true;
+
+        // case SPC_SFT:
+        //     // press the key instead of holding it when another key is pressed
+        //     return false;
+
         default:
             return false;
     }
