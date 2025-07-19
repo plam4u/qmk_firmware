@@ -1,7 +1,20 @@
 #include QMK_KEYBOARD_H
 
-#define HEADER
-#ifdef HEADER
+#ifdef QMK_KEYBOARD
+// QMK_KEYBOARD is always defined.
+// We use it to as a folding region.
+
+enum custom_keycodes {
+    APPPREV = SAFE_RANGE,
+    APPNEXT,
+    SS_ASD
+};
+
+enum layer_names {
+    _QWERTY,
+    _LOWER1, _LOWER2,
+    _RAISE1, _RAISE2,
+};
 
 // Layer keys
 #define ESC_LW1 LT(_LOWER1, KC_ESC)
@@ -71,28 +84,7 @@
 #define OS_LALT OSM(MOD_LALT)
 #define OS_LCMD OSM(MOD_LGUI)
 #define OS_RCMD OSM(MOD_RGUI)
-
-// Mouse
-#ifdef MOUSEKEY_ENABLE
-#    define MOUSE MO(_MOUSE)
-#    define MS_CAPS LT(_MOUSE, KC_CAPS)
-#else
-#    define MOUSE KC_TRNS
-#    define MS_CAPS KC_CAPS
 #endif
-#endif
-
-enum custom_keycodes {
-    APPPREV = SAFE_RANGE,
-    APPNEXT,
-    SS_ASD
-};
-
-enum layer_names {
-    _QWERTY,
-    _LOWER1, _LOWER2,
-    _RAISE1, _RAISE2,
-};
 
 #ifdef TAP_DANCE_ENABLE
 enum {
@@ -110,16 +102,15 @@ void leader_start_user(void) {
 }
 void leader_end_user(void) {
     if (leader_sequence_one_key(KC_F)) {
-        // Leader, f => Types the below string
         SEND_STRING("QMK is awesome.");
-    } else if (leader_sequence_two_keys(KC_D, KC_D)) {
-        // Leader, d, d => Ctrl+A, Ctrl+C
+    }
+    else if (leader_sequence_two_keys(KC_D, KC_D)) {
         SEND_STRING(SS_LCTL("a") SS_LCTL("c"));
-    } else if (leader_sequence_three_keys(KC_D, KC_D, KC_S)) {
-        // Leader, d, d, s => Types the below string
+    }
+    else if (leader_sequence_three_keys(KC_D, KC_D, KC_S)) {
         SEND_STRING("https://start.duckduckgo.com\n");
-    } else if (leader_sequence_two_keys(KC_A, KC_S)) {
-        // Leader, a, s => GUI+S
+    }
+    else if (leader_sequence_two_keys(KC_A, KC_S)) {
         tap_code16(LGUI(KC_S));
     }
 }
@@ -145,7 +136,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         FOCUS  , APPQUIT, TABPREV, BACK   , FORWARD, TABNEXT,        KC_SLSH, KC_7   , KC_8   , KC_9   , KC_0   , _______,
         ITERM  , ALFRED , ACCENT , APPPREV, APPNEXT, HIDEAPP,        KC_ASTR, KC_4   , KC_5   , KC_6   , KC_COLN, _______,
         APPWINS, KC_LCTL, KC_LSFT, KC_LALT, KC_LCMD, CLIPBRD,        KC_EQL , KC_1   , KC_2   , KC_3   , KC_DOT , _______,
-                          PB_10  , _______,                                            KC_PLUS, KC_MINS,
+                          PB_10  , G(KC_A),                                            KC_PLUS, KC_MINS,
                                             _______, LOWER2 ,        _______, _______,
                                             _______, _______,        _______, _______,
                                             _______, _______,        _______, _______
