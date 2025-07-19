@@ -14,7 +14,7 @@
 #define ALFRED  G(KC_SPC)
 #define ITERM   G(KC_ESC)
 #define HIDEAPP MEH(KC_G)
-#define MEETING HYPR(KC_F16)
+#define FOCUS   HYPR(KC_F16)
 #define APPWINS G(KC_GRV)
 #define APPQUIT G(KC_Q)
 
@@ -35,7 +35,7 @@
 #define CLIPBRD HYPR(KC_C)
 #define CUT     G(KC_X)
 #define COPY    G(KC_C)
-#define PASTE   G(KC_P)
+#define PASTE   G(KC_V)
 #define UNDO    G(KC_Z)
 #define REDO    LSG(KC_Z)
 
@@ -94,27 +94,58 @@ enum layer_names {
     _RAISE1, _RAISE2,
 };
 
+#ifdef TAP_DANCE_ENABLE
+enum {
+    TD_SCLN_COLN,
+};
+tap_dance_action_t tap_dance_actions[] = {
+    [TD_SCLN_COLN] = ACTION_TAP_DANCE_DOUBLE(KC_SCLN, KC_COLN),
+};
+#define TD_CLN TD(TD_SCLN_COLN)
+#endif
+
+#ifdef LEADER_ENABLE
+void leader_start_user(void) {
+    // Do something when the leader key is pressed
+}
+void leader_end_user(void) {
+    if (leader_sequence_one_key(KC_F)) {
+        // Leader, f => Types the below string
+        SEND_STRING("QMK is awesome.");
+    } else if (leader_sequence_two_keys(KC_D, KC_D)) {
+        // Leader, d, d => Ctrl+A, Ctrl+C
+        SEND_STRING(SS_LCTL("a") SS_LCTL("c"));
+    } else if (leader_sequence_three_keys(KC_D, KC_D, KC_S)) {
+        // Leader, d, d, s => Types the below string
+        SEND_STRING("https://start.duckduckgo.com\n");
+    } else if (leader_sequence_two_keys(KC_A, KC_S)) {
+        // Leader, a, s => GUI+S
+        tap_code16(LGUI(KC_S));
+    }
+}
+#endif
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_QWERTY] = LAYOUT_5x6(
-        _______, REDO   , CUT    , COPY   , PASTE  , UNDO   ,        _______, _______, _______, _______, _______,  _______,
+        QK_LEAD, REDO   , CUT    , COPY   , PASTE  , UNDO   ,        _______, _______, _______, _______, _______,  QK_LEAD,
 
         ENT_HPR, KC_Q   , KC_W   , KC_E   , KC_R   , KC_T   ,        KC_Y   , KC_U   , KC_I   , KC_O   , KC_P    , KC_COLN,
-        ESC_MEH, KC_A   , KC_S   , KC_D   , KC_F   , KC_G   ,        KC_H   , KC_J   , KC_K   , KC_L   , KC_SCLN , KC_QUOT,
+        ESC_MEH, KC_A   , KC_S   , KC_D   , KC_F   , KC_G   ,        KC_H   , KC_J   , KC_K   , KC_L   , TD_CLN  , KC_QUOT,
         ALT_TLD, CTL_Z  , KC_X   , KC_C   , KC_V   , KC_B   ,        KC_N   , KC_M   , KC_COMM, KC_DOT , CTL_SL  , ALT_BSL,
-                          PB_10  , _______,                                            KC_EQL , KC_MINS,
+                          KC_LBRC, KC_RBRC,                                            KC_EQL , KC_MINS,
                                             ESC_LW1, KC_SPC ,        ENT_RS2, BSP_RS1,
                                             ENT_CTL, TAB_SFT,        OS_RSFT, OS_RCTL,
                                             OS_LALT, BSP_CMD,        OS_RCMD, OS_LALT
     ),
 
     [_LOWER1] = LAYOUT_5x6(
-        SS_ASD , G(KC_1), G(KC_2), G(KC_3), G(KC_4), G(KC_5),        G(KC_6), G(KC_7), G(KC_8), G(KC_9), G(KC_0), _______,
+        SS_ASD , G(KC_1), G(KC_2), G(KC_3), G(KC_4), G(KC_5),        G(KC_6), G(KC_7), G(KC_8), G(KC_9), G(KC_0), QK_BOOT,
 
-        MEETING, APPQUIT, TABPREV, BACK   , FORWARD, TABNEXT,        KC_SLSH, KC_7   , KC_8   , KC_9   , KC_0   , _______,
+        FOCUS  , APPQUIT, TABPREV, BACK   , FORWARD, TABNEXT,        KC_SLSH, KC_7   , KC_8   , KC_9   , KC_0   , _______,
         ITERM  , ALFRED , ACCENT , APPPREV, APPNEXT, HIDEAPP,        KC_ASTR, KC_4   , KC_5   , KC_6   , KC_COLN, _______,
-        APPWINS, KC_LCTL, KC_LALT, KC_LCMD, KC_LSFT, CLIPBRD,        KC_EQL , KC_1   , KC_2   , KC_3   , KC_DOT , _______,
-                          _______, _______,                                            KC_PLUS, KC_MINS,
+        APPWINS, KC_LCTL, KC_LSFT, KC_LALT, KC_LCMD, CLIPBRD,        KC_EQL , KC_1   , KC_2   , KC_3   , KC_DOT , _______,
+                          PB_10  , _______,                                            KC_PLUS, KC_MINS,
                                             _______, LOWER2 ,        _______, _______,
                                             _______, _______,        _______, _______,
                                             _______, _______,        _______, _______
@@ -125,7 +156,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
         _______, APP01  , APP02  , APP03  , APP04  , APP05  ,        DM_PLY1, KC_F7  , KC_F8  , KC_F9  , KC_F12 , _______,
         _______, APP06  , APP07  , APP08  , APP09  , APP10  ,        DM_RSTP, KC_F4  , KC_F5  , KC_F6  , KC_F11 , _______,
-        _______, OS_LCTL, OS_LALT, OS_LCMD, OS_LSFT, CENTER ,        DM_REC1, KC_F1  , KC_F2  , KC_F3  , KC_F10 , _______,
+        _______, OS_LCTL, OS_LSFT, OS_LALT, OS_LCMD, CENTER ,        DM_REC1, KC_F1  , KC_F2  , KC_F3  , KC_F10 , _______,
                           _______, _______,                                            _______, _______,
                                             _______, _______,        _______, _______,
                                             _______, _______,        _______, _______,
@@ -138,7 +169,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_QUES, KC_PERC, KC_AT  , KC_LCBR, KC_RCBR, KC_CIRC,        SG_LBRC, KC_MPLY, KC_MNXT, SG_RBRC, _______, _______,
         KC_EXLM, KC_UNDS, KC_AMPR, KC_LPRN, KC_RPRN, KC_DLR ,        KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT, _______, _______,
         KC_TILD, KC_HASH, KC_PIPE, KC_LBRC, KC_RBRC, KC_ASTR,        _______, KC_BSPC, KC_ENT , KC_DEL , _______, _______,
-                          _______, _______,                                            RAISE2 , _______,
+                          _______, _______,                                            _______, _______,
                                             _______, _______,        _______, _______,
                                             _______, _______,        _______, _______,
                                             _______, _______,        _______, _______
@@ -147,9 +178,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_RAISE2] = LAYOUT_5x6(
         _______, _______, _______, _______, _______, _______,        _______, _______, _______, _______, _______, _______,
 
-        _______, _______, KC_BTN2, KC_BTN3, KC_BTN1, _______,        _______, KC_BTN1, KC_BTN3, KC_BTN2, _______, _______,
-        _______, _______, KC_ACL2, KC_ACL1, KC_ACL0, _______,        KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, _______, _______,
-        _______, OS_LCTL, OS_LALT, OS_LCMD, OS_LSFT, KC_BTN3,        KC_WH_R, KC_WH_U, KC_WH_D, KC_WH_L, _______, _______,
+        _______, _______, _______, _______, _______, _______,        _______, KC_BTN1, KC_BTN3, KC_BTN2, _______, _______,
+        _______, KC_ACL2, KC_ACL2, KC_ACL1, KC_ACL0, _______,        KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, _______, _______,
+        _______, _______, _______, _______, _______, _______,        KC_WH_R, KC_WH_U, KC_WH_D, KC_WH_L, _______, _______,
                           _______, _______,                                            _______, _______,
                                             _______, _______,        _______, _______,
                                             _______, _______,        _______, _______,
@@ -237,6 +268,9 @@ bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
 bool get_tapping_force_hold(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case SPC_SFT:
+        case TAB_SFT:
+        case ENT_CTL:
+        case BSP_CMD:
         case ENT_SFT:
             return true;
 
