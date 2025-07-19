@@ -32,6 +32,9 @@
 
 // Miscellaneous
 #define CLIPBRD LSG(KC_C)
+#define CUT     G(KC_X)
+#define COPY    G(KC_C)
+#define PASTE   G(KC_P)
 
 // Combinations
 #define CTL_Z   CTL_T(KC_Z)
@@ -46,7 +49,8 @@
 #define SG_RBRC RSG(KC_RBRC)
 #define TABPREV SG_LBRC
 #define TABNEXT SG_RBRC
-#define TAB_CMD CMD_T(KC_TAB)
+#define BSP_CMD CMD_T(KC_BSPC)
+#define TAB_SFT SFT_T(KC_TAB)
 #define ESC_MEH MEH_T(KC_ESC)
 #define ENT_HPR HYPR_T(KC_ENT)
 #define SPC_SFT LSFT_T(KC_SPC)
@@ -90,15 +94,15 @@ enum layer_names {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_QWERTY] = LAYOUT_5x6(
-        KC_ESC , KC_1   , KC_2   , KC_3   , KC_4   , KC_5   ,        KC_6   , KC_7   , KC_8   , KC_9   , KC_0   ,  KC_BSPC,
+        _______, PB_10  , CUT    , COPY   , PASTE  , _______,        _______, _______, _______, _______, _______,  _______,
 
         ENT_HPR, KC_Q   , KC_W   , KC_E   , KC_R   , KC_T   ,        KC_Y   , KC_U   , KC_I   , KC_O   , KC_P    , KC_COLN,
         ESC_MEH, KC_A   , KC_S   , KC_D   , KC_F   , KC_G   ,        KC_H   , KC_J   , KC_K   , KC_L   , KC_SCLN , KC_QUOT,
         ALT_TLD, CTL_Z  , KC_X   , KC_C   , KC_V   , KC_B   ,        KC_N   , KC_M   , KC_COMM, KC_DOT , CTL_SL  , ALT_BSL,
-                          PB_10  , KC_SPC ,                                            KC_EQL , KC_MINS,
-                                            ESC_LW1, SPC_SFT,        ENT_RS2, BSP_RS1,
-                                            BSP_SFT, TAB_CMD,        OS_RSFT, OS_RCMD,
-                                            OS_LALT, ENT_CTL,        OS_RCTL, OS_LALT
+                          _______, _______,                                            KC_EQL , KC_MINS,
+                                            ESC_LW1, KC_SPC ,        ENT_RS2, BSP_RS1,
+                                            ENT_CTL, TAB_SFT,        OS_RSFT, OS_RCTL,
+                                            OS_LALT, BSP_CMD,        OS_RCMD, OS_LALT
     ),
 
     [_LOWER1] = LAYOUT_5x6(
