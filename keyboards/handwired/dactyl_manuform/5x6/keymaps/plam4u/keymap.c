@@ -160,6 +160,15 @@ const keypos_t PROGMEM hand_swap_config[MATRIX_ROWS][MATRIX_COLS] = {
 };
 #endif
 
+#ifdef COMBO_ENABLE
+const uint16_t PROGMEM test_combo1[] = {KC_BSPC, KC_TAB, COMBO_END};
+const uint16_t PROGMEM test_combo2[] = {KC_J, KC_K, COMBO_END};
+combo_t key_combos[] = {
+    COMBO(test_combo1, KC_ENT),
+    COMBO(test_combo2, KC_ESC),
+};
+#endif
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_QWERTY] = LAYOUT_5x6(
@@ -168,10 +177,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         ENT_HPR, KC_Q   , KC_W   , KC_E   , KC_R   , KC_T   ,        KC_Y   , KC_U   , KC_I   , KC_O   , KC_P    , KC_COLN,
         ESC_MEH, KC_A   , KC_S   , KC_D   , KC_F   , KC_G   ,        KC_H   , KC_J   , KC_K   , KC_L   , TD_CLN  , KC_QUOT,
         ALT_TLD, CTL_Z  , KC_X   , KC_C   , KC_V   , KC_B   ,        KC_N   , KC_M   , KC_COMM, KC_DOT , CTL_SL  , ALT_BSL,
-                          KC_LBRC, KC_RBRC,                                            KC_EQL , KC_MINS,
+                          KC_BSPC, KC_TAB ,                                            KC_EQL , KC_MINS,
                                             ESC_LW1, KC_SPC ,        ENT_RS2, BSP_RS1,
-                                            ENT_CTL, TAB_SFT,        OS_RSFT, OS_RCTL,
-                                            OS_LALT, BSP_CMD,        OS_RGUI, OS_LALT
+                                            OS_LCTL, OS_LSFT,        OS_RSFT, OS_RCTL,
+                                            OS_LALT, OS_LGUI,        OS_RGUI, OS_LALT
     ),
 
     [_LOWER1] = LAYOUT_5x6(
