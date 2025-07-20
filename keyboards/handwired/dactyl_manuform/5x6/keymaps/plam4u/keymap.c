@@ -125,8 +125,8 @@ tap_dance_action_t tap_dance_actions[] = {
 //     // Do something when the leader key is pressed
 // }
 // void leader_end_user(void) {
-//     if (leader_sequence_one_key(KC_F)) {
-//         SEND_STRING("QMK is awesome.");
+//     if (leader_sequence_one_key(REDO)) {
+//         swap_hands_toggle();
 //     }
 //     else if (leader_sequence_two_keys(KC_D, KC_D)) {
 //         SEND_STRING(SS_LCTL("a") SS_LCTL("c"));
@@ -172,15 +172,15 @@ combo_t key_combos[] = {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_QWERTY] = LAYOUT_5x6(
-        SH_TOGG, REDO   , CUT    , COPY   , PASTE  , UNDO   ,        _______, KC_ESC , CTRL_C , _______, _______,  QK_LEAD,
+        SH_TT  , REDO   , CUT    , COPY   , PASTE  , UNDO   ,        _______, KC_ESC , CTRL_C , _______, _______,  QK_LEAD,
 
         ENT_HPR, KC_Q   , KC_W   , KC_E   , KC_R   , KC_T   ,        KC_Y   , KC_U   , KC_I   , KC_O   , KC_P    , KC_COLN,
         ESC_MEH, KC_A   , KC_S   , KC_D   , KC_F   , KC_G   ,        KC_H   , KC_J   , KC_K   , KC_L   , TD_CLN  , KC_QUOT,
         ALT_TLD, CTL_Z  , KC_X   , KC_C   , KC_V   , KC_B   ,        KC_N   , KC_M   , KC_COMM, KC_DOT , CTL_SL  , ALT_BSL,
                           KC_BSPC, KC_TAB ,                                            KC_EQL , KC_MINS,
                                             ESC_LW1, KC_SPC ,        ENT_RS2, BSP_RS1,
-                                            OS_LCTL, OS_LSFT,        OS_RSFT, OS_RCTL,
-                                            OS_LALT, OS_LGUI,        OS_RGUI, OS_LALT
+                                            KC_LCTL, KC_LSFT,        OS_RSFT, OS_RCTL,
+                                            KC_LALT, KC_LGUI,        OS_RGUI, OS_LALT
     ),
 
     [_LOWER1] = LAYOUT_5x6(
