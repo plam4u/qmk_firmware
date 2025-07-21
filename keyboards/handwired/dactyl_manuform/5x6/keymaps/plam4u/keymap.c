@@ -6,8 +6,10 @@ enum layer_names {
 
     _L_MACOS_NUMPAD,
     _L_APP1_FKEY,
-    _L_SH_LETTERS,
-    _L_SH_NUMPAD,
+    _L_SH_LETTER,
+    _L_SH_KEYPAD,
+    _L_SH_FKEY,
+    _L_SH_ARROW,
 
     _R_SYM_ARROW,
     _R_APP2_MOUSE,
@@ -19,8 +21,10 @@ enum layer_names {
 #define LT_SA_B LT(_R_SYM_ARROW, KC_BSPC)
 #define LT_AM_E LT(_R_APP2_MOUSE, KC_ENT)
 #define TO_APFK TO(_L_APP1_FKEY)
-#define TG_SHLT TG(_L_SH_LETTERS)
-#define TG_SHNM TG(_L_SH_NUMPAD)
+#define TG_SHLT TG(_L_SH_LETTER)
+#define TG_SHKP TG(_L_SH_KEYPAD)
+#define TG_SHFK TG(_L_SH_FKEY)
+#define TG_SHAR TG(_L_SH_ARROW)
 #endif
 
 #ifdef QMK_KEYBOARD
@@ -201,30 +205,54 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         FOCUS  , APPQUIT, TABPREV, BACK   , FORWARD, TABNEXT,        KC_SLSH, KC_7   , KC_8   , KC_9   , KC_0   , _______,
         ITERM  , ALFRED , ACCENT , APPPREV, APPNEXT, HIDEAPP,        KC_ASTR, KC_4   , KC_5   , KC_6   , KC_COLN, _______,
         APPWINS, OS_LCTL, OS_LSFT, OS_LALT, OS_LGUI, CLIPBRD,        KC_EQL , KC_1   , KC_2   , KC_3   , KC_DOT , _______,
-                          TG_SHLT, _______,                                            KC_PLUS, KC_MINS,
+                          TG_SHLT, TG_SHAR,                                            KC_PLUS, KC_MINS,
                                             _______, TO_APFK,        _______, _______,
                                             _______, _______,        _______, _______,
                                             _______, _______,        _______, _______
     ),
 
-    [_L_SH_LETTERS] = LAYOUT_5x6(
+    [_L_SH_LETTER] = LAYOUT_5x6(
         TO_QWER, _______, _______, _______, _______, _______,        _______, _______, _______, _______, _______, _______,
 
         _______, KC_P   , KC_O   , KC_I   , KC_U   , KC_Y   ,        KC_T   , KC_R   , KC_E   , KC_W   , KC_Q   , _______,
         _______, KC_SCLN, KC_L   , KC_K   , KC_J   , KC_H   ,        KC_G   , KC_F   , KC_D   , KC_S   , KC_A   , _______,
         _______, KC_SLSH, KC_DOT , KC_COMM, KC_M   , KC_N   ,        KC_B   , KC_V   , KC_C   , KC_X   , KC_Z   , _______,
-                          TG_SHNM, _______,                                            _______, _______,
+                          TG_SHKP, TG_SHFK,                                            _______, _______,
                                             _______, _______,        _______, _______,
                                             _______, _______,        _______, _______,
                                             _______, _______,        _______, _______
     ),
 
-    [_L_SH_NUMPAD] = LAYOUT_5x6(
+    [_L_SH_KEYPAD] = LAYOUT_5x6(
+        TO_QWER, _______, KC_1   , KC_2   , KC_3   , _______,        _______, _______, _______, _______, _______, _______,
+
+        KC_PDOT, KC_PEQL, KC_KP_7, KC_KP_8, KC_KP_9, KC_KP_0,        _______, _______, _______, _______, _______, _______,
+        KC_HOME, KC_PAST, KC_KP_4, KC_KP_5, KC_KP_6, KC_PMNS,        _______, _______, _______, _______, _______, _______,
+        _______, KC_PSLS, KC_KP_1, KC_KP_2, KC_KP_3, KC_PPLS,        _______, _______, _______, _______, _______, _______,
+                          _______, _______,                                   _______, _______,
+                                            _______, _______,        _______, _______,
+                                            _______, _______,        _______, _______,
+                                            _______, _______,        _______, _______
+    ),
+
+    [_L_SH_FKEY] = LAYOUT_5x6(
         TO_QWER, _______, _______, _______, _______, _______,        _______, _______, _______, _______, _______, _______,
 
-        _______, KC_0   , KC_9   , KC_8   , KC_7   , KC_EQL ,        _______, _______, _______, _______, _______, _______,
-        _______, KC_ASTR, KC_6   , KC_5   , KC_4   , KC_MINS,        _______, _______, _______, _______, _______, _______,
-        _______, KC_SLSH, KC_3   , KC_2   , KC_1   , KC_PLUS,        _______, _______, _______, _______, _______, _______,
+        _______, _______, KC_F7  , KC_F8  , KC_F9  , _______,        _______, _______, _______, _______, _______, _______,
+        _______, _______, KC_F4  , KC_F5  , KC_F6  , _______,        _______, _______, _______, _______, _______, _______,
+        _______, _______, KC_F1  , KC_F2  , KC_F3  , _______,        _______, _______, _______, _______, _______, _______,
+                          _______, _______,                                   _______, _______,
+                                            _______, _______,        _______, _______,
+                                            _______, _______,        _______, _______,
+                                            _______, _______,        _______, _______
+    ),
+
+    [_L_SH_ARROW] = LAYOUT_5x6(
+        TO_QWER, _______, _______, _______, _______, _______,        _______, _______, _______, _______, _______, _______,
+
+        _______, _______, PB_10  , KC_UP  , KC_MPLY, _______,        _______, _______, _______, _______, _______, _______,
+        _______, _______, KC_LEFT, KC_DOWN, KC_RGHT, _______,        _______, _______, _______, _______, _______, _______,
+        _______, _______, KC_BSPC, KC_ENT , KC_DEL , _______,        _______, _______, _______, _______, _______, _______,
                           _______, _______,                                   _______, _______,
                                             _______, _______,        _______, _______,
                                             _______, _______,        _______, _______,
@@ -339,6 +367,7 @@ bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
         case ALT_BSL:
         case ENT_CTL:
         case LT_AM_E:
+        case TG_SHLT:
             // Immediately select the hold action when another key is pressed.
             return true;
 
