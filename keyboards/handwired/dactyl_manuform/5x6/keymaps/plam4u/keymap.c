@@ -1,5 +1,24 @@
 #include QMK_KEYBOARD_H
 
+#ifndef NO_ACTION_LAYER
+enum layer_names {
+    _DF_QWERTY,
+
+    _L_MACOS_NUMPAD,
+    _L_APP1_FKEY,
+    _L_SWAP_HANDS,
+
+    _R_SYM_ARROW,
+    _R_APP2_MOUSE,
+
+    _EMPTY,
+};
+#define LT_MN_E LT(_L_MACOS_NUMPAD, KC_ESC)
+#define LT_SA_B LT(_R_SYM_ARROW, KC_BSPC)
+#define LT_AM_E LT(_R_APP2_MOUSE, KC_ENT)
+#define TO_APFK TO(_L_APP1_FKEY)
+#endif
+
 #ifdef QMK_KEYBOARD
 // QMK_KEYBOARD is always defined.
 // We use it to as a folding region.
@@ -9,19 +28,6 @@ enum custom_keycodes {
     APPNEXT,
     SS_ASD
 };
-
-enum layer_names {
-    _QWERTY,
-    _LOWER1, _LOWER2,
-    _RAISE1, _RAISE2,
-};
-
-// Layer keys
-#define ESC_LW1 LT(_LOWER1, KC_ESC)
-#define BSP_RS1 LT(_RAISE1, KC_BSPC)
-#define ENT_RS2 LT(_RAISE2, KC_ENT)
-#define LOWER2  TO(_LOWER2)
-#define RAISE2  TO(_RAISE2)
 
 // Apps
 #define ALFRED  G(KC_SPC)
@@ -110,34 +116,36 @@ enum layer_names {
 
 #endif
 
-#ifdef TAP_DANCE_ENABLE
+#ifndef TAP_DANCE_ENABLE
+#   define TD_CLN KC_SCLN
+#elif
 enum {
     TD_SCLN_COLN,
 };
 tap_dance_action_t tap_dance_actions[] = {
     [TD_SCLN_COLN] = ACTION_TAP_DANCE_DOUBLE(KC_SCLN, KC_COLN),
 };
-#define TD_CLN TD(TD_SCLN_COLN)
+#   define TD_CLN TD(TD_SCLN_COLN)
 #endif
 
 #ifdef LEADER_ENABLE
-// void leader_start_user(void) {
-//     // Do something when the leader key is pressed
-// }
-// void leader_end_user(void) {
-//     if (leader_sequence_one_key(REDO)) {
-//         swap_hands_toggle();
-//     }
-//     else if (leader_sequence_two_keys(KC_D, KC_D)) {
-//         SEND_STRING(SS_LCTL("a") SS_LCTL("c"));
-//     }
-//     else if (leader_sequence_three_keys(KC_D, KC_D, KC_S)) {
-//         SEND_STRING("https://start.duckduckgo.com\n");
-//     }
-//     else if (leader_sequence_two_keys(KC_A, KC_S)) {
-//         tap_code16(LGUI(KC_S));
-//     }
-// }
+void leader_start_user(void) {
+    // Do something when the leader key is pressed
+}
+void leader_end_user(void) {
+    if (leader_sequence_one_key(REDO)) {
+        swap_hands_toggle();
+    }
+    else if (leader_sequence_two_keys(KC_D, KC_D)) {
+        SEND_STRING(SS_LCTL("a") SS_LCTL("c"));
+    }
+    else if (leader_sequence_three_keys(KC_D, KC_D, KC_S)) {
+        SEND_STRING("https://start.duckduckgo.com\n");
+    }
+    else if (leader_sequence_two_keys(KC_A, KC_S)) {
+        tap_code16(LGUI(KC_S));
+    }
+}
 #endif
 
 #ifdef SWAP_HANDS_ENABLE
@@ -171,31 +179,46 @@ combo_t key_combos[] = {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
-    [_QWERTY] = LAYOUT_5x6(
-        SH_TT  , REDO   , CUT    , COPY   , PASTE  , UNDO   ,        _______, KC_ESC , CTRL_C , _______, _______,  QK_LEAD,
+    [_DF_QWERTY] = LAYOUT_5x6(
+        _______, REDO   , CUT    , COPY   , PASTE  , UNDO   ,        _______, KC_ESC , CTRL_C , _______, _______, _______,
 
-        ENT_HPR, KC_Q   , KC_W   , KC_E   , KC_R   , KC_T   ,        KC_Y   , KC_U   , KC_I   , KC_O   , KC_P    , KC_COLN,
-        ESC_MEH, KC_A   , KC_S   , KC_D   , KC_F   , KC_G   ,        KC_H   , KC_J   , KC_K   , KC_L   , TD_CLN  , KC_QUOT,
-        ALT_TLD, CTL_Z  , KC_X   , KC_C   , KC_V   , KC_B   ,        KC_N   , KC_M   , KC_COMM, KC_DOT , CTL_SL  , ALT_BSL,
+        ENT_HPR, KC_Q   , KC_W   , KC_E   , KC_R   , KC_T   ,        KC_Y   , KC_U   , KC_I   , KC_O   , KC_P   , KC_COLN,
+        ESC_MEH, KC_A   , KC_S   , KC_D   , KC_F   , KC_G   ,        KC_H   , KC_J   , KC_K   , KC_L   , TD_CLN , KC_QUOT,
+        ALT_TLD, CTL_Z  , KC_X   , KC_C   , KC_V   , KC_B   ,        KC_N   , KC_M   , KC_COMM, KC_DOT , CTL_SL , ALT_BSL,
                           KC_BSPC, KC_TAB ,                                            KC_EQL , KC_MINS,
-                                            ESC_LW1, KC_SPC ,        ENT_RS2, BSP_RS1,
+                                            LT_MN_E, KC_SPC ,        LT_AM_E, LT_SA_B,
                                             KC_LCTL, KC_LSFT,        OS_RSFT, OS_RCTL,
                                             KC_LALT, KC_LGUI,        OS_RGUI, OS_LALT
     ),
 
-    [_LOWER1] = LAYOUT_5x6(
+    [_L_MACOS_NUMPAD] = LAYOUT_5x6(
         SS_ASD , CMD_01 , CMD_02 , CMD_03 , CMD_04 , CMD_05 ,        CMD_06 , CMD_07 , CMD_08 , CMD_09 , CMD_00 , QK_BOOT,
 
         FOCUS  , APPQUIT, TABPREV, BACK   , FORWARD, TABNEXT,        KC_SLSH, KC_7   , KC_8   , KC_9   , KC_0   , _______,
         ITERM  , ALFRED , ACCENT , APPPREV, APPNEXT, HIDEAPP,        KC_ASTR, KC_4   , KC_5   , KC_6   , KC_COLN, _______,
         APPWINS, OS_LCTL, OS_LSFT, OS_LALT, OS_LGUI, CLIPBRD,        KC_EQL , KC_1   , KC_2   , KC_3   , KC_DOT , _______,
-                          PB_10  , CMD_A  ,                                            KC_PLUS, KC_MINS,
-                                            _______, LOWER2 ,        _______, _______,
+                          _______, _______,                                            KC_PLUS, KC_MINS,
+                                            _______, TO_APFK,        _______, _______,
+                                            _______, _______,        _______, _______,
+                                            _______, _______,        _______, _______
+    ),
+    // PB_10 -> take screenshot
+    // CMD_A -> tmux previous session
+    // _vt,r_<t_ý>5f,w.<t_ý>5;w.<t_ý>5;w.<t_ý>5;w.<t_ý>5;w.<t_ý>5;w.<t_ý>5;w.<t_ý>5;w.<t_ý>5;w.<t_ý>5;w.<t_ý>5;w.
+
+    [_L_SWAP_HANDS] = LAYOUT_5x6(
+        _______, _______, _______, _______, _______, _______,        _______, _______, _______, _______, _______, _______,
+
+        _______, KC_P   , KC_O   , KC_I   , KC_U   , KC_Y   ,        KC_T   , KC_R   , KC_E   , KC_W   , KC_Q   , _______,
+        _______, KC_SCLN, KC_L   , KC_K   , KC_J   , KC_H   ,        KC_G   , KC_F   , KC_D   , KC_S   , KC_A   , _______,
+        _______, KC_SLSH, KC_DOT , KC_COMM, KC_M   , KC_N   ,        KC_B   , KC_V   , KC_C   , KC_X   , KC_Z   , _______,
+                          _______, _______,                                            _______, _______,
+                                            _______, _______,        _______, _______,
                                             _______, _______,        _______, _______,
                                             _______, _______,        _______, _______
     ),
 
-    [_LOWER2] = LAYOUT_5x6(
+    [_L_APP1_FKEY] = LAYOUT_5x6(
         _______, _______, _______, _______, _______, _______,        _______, _______, _______, _______, _______, _______,
 
         _______, APP01  , APP02  , APP03  , APP04  , APP05  ,        DM_PLY1, KC_F7  , KC_F8  , KC_F9  , KC_F12 , _______,
@@ -207,7 +230,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                             _______, _______,        _______, _______
     ),
 
-     [_RAISE1] = LAYOUT_5x6(
+     [_R_SYM_ARROW] = LAYOUT_5x6(
         _______, _______, _______, _______, _______, _______,        _______, _______, _______, _______, _______, _______,
 
         KC_QUES, KC_PERC, KC_AT  , KC_LCBR, KC_RCBR, KC_CIRC,        SG_LBRC, KC_MPLY, KC_MNXT, SG_RBRC, _______, _______,
@@ -219,7 +242,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                             _______, _______,        _______, _______
     ),
 
-    [_RAISE2] = LAYOUT_5x6(
+    [_R_APP2_MOUSE] = LAYOUT_5x6(
         _______, _______, _______, _______, _______, _______,        _______, _______, _______, _______, _______, _______,
 
         _______, APP11  , APP12  , APP13  , APP14  , APP15  ,        _______, KC_BTN1, KC_BTN3, KC_BTN2, _______, _______,
@@ -231,6 +254,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                             _______, _______,        _______, _______
     ),
 
+    [_EMPTY] = LAYOUT_5x6(
+        _______, _______, _______, _______, _______, _______,        _______, _______, _______, _______, _______, _______,
+
+        _______, _______, _______, _______, _______, _______,        _______, _______, _______, _______, _______, _______,
+        _______, _______, _______, _______, _______, _______,        _______, _______, _______, _______, _______, _______,
+        _______, _______, _______, _______, _______, _______,        _______, _______, _______, _______, _______, _______,
+                          _______, _______,                                            _______, _______,
+                                            _______, _______,        _______, _______,
+                                            _______, _______,        _______, _______,
+                                            _______, _______,        _______, _______
+    ),
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
@@ -243,20 +277,20 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             }
             return false;
 
-        case ESC_LW1:
+        case LT_MN_E :
             // clear keys used in other combianations
             if (!record->event.pressed) {
                 unregister_code(KC_LCMD);
-                layer_off(_LOWER1);
-                layer_off(_LOWER2);
+                layer_off(_L_MACOS_NUMPAD);
+                layer_off(_L_APP1_FKEY);
             }
             break;
 
-        case BSP_RS1:
+        case LT_SA_B:
             // clear keys used in other combianations
             if (!record->event.pressed) {
-                layer_off(_RAISE1);
-                layer_off(_RAISE2);
+                layer_off(_R_SYM_ARROW);
+                layer_off(_R_APP2_MOUSE);
             }
             break;
 
@@ -290,11 +324,11 @@ bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
 
         case ALT_TLD:
         case ENT_HPR:
-        case ESC_LW1:
-        case BSP_RS1:
+        case LT_MN_E:
+        case LT_SA_B:
         case ALT_BSL:
         case ENT_CTL:
-        case ENT_RS2:
+        case LT_AM_E:
             // Immediately select the hold action when another key is pressed.
             return true;
 
