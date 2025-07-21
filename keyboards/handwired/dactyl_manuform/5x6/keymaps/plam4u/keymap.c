@@ -13,10 +13,12 @@ enum layer_names {
 
     _EMPTY,
 };
+#define TO_QWER TO(_DF_QWERTY)
 #define LT_MN_E LT(_L_MACOS_NUMPAD, KC_ESC)
 #define LT_SA_B LT(_R_SYM_ARROW, KC_BSPC)
 #define LT_AM_E LT(_R_APP2_MOUSE, KC_ENT)
 #define TO_APFK TO(_L_APP1_FKEY)
+#define TG_SWHN TG(_L_SWAP_HANDS)
 #endif
 
 #ifdef QMK_KEYBOARD
@@ -197,7 +199,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         FOCUS  , APPQUIT, TABPREV, BACK   , FORWARD, TABNEXT,        KC_SLSH, KC_7   , KC_8   , KC_9   , KC_0   , _______,
         ITERM  , ALFRED , ACCENT , APPPREV, APPNEXT, HIDEAPP,        KC_ASTR, KC_4   , KC_5   , KC_6   , KC_COLN, _______,
         APPWINS, OS_LCTL, OS_LSFT, OS_LALT, OS_LGUI, CLIPBRD,        KC_EQL , KC_1   , KC_2   , KC_3   , KC_DOT , _______,
-                          _______, _______,                                            KC_PLUS, KC_MINS,
+                          TG_SWHN, _______,                                            KC_PLUS, KC_MINS,
                                             _______, TO_APFK,        _______, _______,
                                             _______, _______,        _______, _______,
                                             _______, _______,        _______, _______
@@ -207,7 +209,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // _vt,r_<t_ý>5f,w.<t_ý>5;w.<t_ý>5;w.<t_ý>5;w.<t_ý>5;w.<t_ý>5;w.<t_ý>5;w.<t_ý>5;w.<t_ý>5;w.<t_ý>5;w.<t_ý>5;w.
 
     [_L_SWAP_HANDS] = LAYOUT_5x6(
-        _______, _______, _______, _______, _______, _______,        _______, _______, _______, _______, _______, _______,
+        TO_QWER, _______, _______, _______, _______, _______,        _______, _______, _______, _______, _______, _______,
 
         _______, KC_P   , KC_O   , KC_I   , KC_U   , KC_Y   ,        KC_T   , KC_R   , KC_E   , KC_W   , KC_Q   , _______,
         _______, KC_SCLN, KC_L   , KC_K   , KC_J   , KC_H   ,        KC_G   , KC_F   , KC_D   , KC_S   , KC_A   , _______,
@@ -277,20 +279,23 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             }
             return false;
 
-        case LT_MN_E :
+
+        case LT_MN_E:
             // clear keys used in other combianations
             if (!record->event.pressed) {
                 unregister_code(KC_LCMD);
-                layer_off(_L_MACOS_NUMPAD);
-                layer_off(_L_APP1_FKEY);
+                layer_clear();
+                // layer_off(_L_MACOS_NUMPAD);
+                // layer_off(_L_APP1_FKEY);
             }
             break;
 
         case LT_SA_B:
             // clear keys used in other combianations
             if (!record->event.pressed) {
-                layer_off(_R_SYM_ARROW);
-                layer_off(_R_APP2_MOUSE);
+                layer_clear();
+                // layer_off(_R_SYM_ARROW);
+                // layer_off(_R_APP2_MOUSE);
             }
             break;
 
