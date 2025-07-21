@@ -6,7 +6,8 @@ enum layer_names {
 
     _L_MACOS_NUMPAD,
     _L_APP1_FKEY,
-    _L_SWAP_HANDS,
+    _L_SH_LETTERS,
+    _L_SH_NUMPAD,
 
     _R_SYM_ARROW,
     _R_APP2_MOUSE,
@@ -18,7 +19,8 @@ enum layer_names {
 #define LT_SA_B LT(_R_SYM_ARROW, KC_BSPC)
 #define LT_AM_E LT(_R_APP2_MOUSE, KC_ENT)
 #define TO_APFK TO(_L_APP1_FKEY)
-#define TG_SWHN TG(_L_SWAP_HANDS)
+#define TG_SHLT TG(_L_SH_LETTERS)
+#define TG_SHNM TG(_L_SH_NUMPAD)
 #endif
 
 #ifdef QMK_KEYBOARD
@@ -199,22 +201,31 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         FOCUS  , APPQUIT, TABPREV, BACK   , FORWARD, TABNEXT,        KC_SLSH, KC_7   , KC_8   , KC_9   , KC_0   , _______,
         ITERM  , ALFRED , ACCENT , APPPREV, APPNEXT, HIDEAPP,        KC_ASTR, KC_4   , KC_5   , KC_6   , KC_COLN, _______,
         APPWINS, OS_LCTL, OS_LSFT, OS_LALT, OS_LGUI, CLIPBRD,        KC_EQL , KC_1   , KC_2   , KC_3   , KC_DOT , _______,
-                          TG_SWHN, _______,                                            KC_PLUS, KC_MINS,
+                          TG_SHLT, _______,                                            KC_PLUS, KC_MINS,
                                             _______, TO_APFK,        _______, _______,
                                             _______, _______,        _______, _______,
                                             _______, _______,        _______, _______
     ),
-    // PB_10 -> take screenshot
-    // CMD_A -> tmux previous session
-    // _vt,r_<t_ý>5f,w.<t_ý>5;w.<t_ý>5;w.<t_ý>5;w.<t_ý>5;w.<t_ý>5;w.<t_ý>5;w.<t_ý>5;w.<t_ý>5;w.<t_ý>5;w.<t_ý>5;w.
 
-    [_L_SWAP_HANDS] = LAYOUT_5x6(
+    [_L_SH_LETTERS] = LAYOUT_5x6(
         TO_QWER, _______, _______, _______, _______, _______,        _______, _______, _______, _______, _______, _______,
 
         _______, KC_P   , KC_O   , KC_I   , KC_U   , KC_Y   ,        KC_T   , KC_R   , KC_E   , KC_W   , KC_Q   , _______,
         _______, KC_SCLN, KC_L   , KC_K   , KC_J   , KC_H   ,        KC_G   , KC_F   , KC_D   , KC_S   , KC_A   , _______,
         _______, KC_SLSH, KC_DOT , KC_COMM, KC_M   , KC_N   ,        KC_B   , KC_V   , KC_C   , KC_X   , KC_Z   , _______,
-                          _______, _______,                                            _______, _______,
+                          TG_SHNM, _______,                                            _______, _______,
+                                            _______, _______,        _______, _______,
+                                            _______, _______,        _______, _______,
+                                            _______, _______,        _______, _______
+    ),
+
+    [_L_SH_NUMPAD] = LAYOUT_5x6(
+        TO_QWER, _______, _______, _______, _______, _______,        _______, _______, _______, _______, _______, _______,
+
+        _______, KC_0   , KC_9   , KC_8   , KC_7   , KC_EQL ,        _______, _______, _______, _______, _______, _______,
+        _______, KC_ASTR, KC_6   , KC_5   , KC_4   , KC_MINS,        _______, _______, _______, _______, _______, _______,
+        _______, KC_SLSH, KC_3   , KC_2   , KC_1   , KC_PLUS,        _______, _______, _______, _______, _______, _______,
+                          _______, _______,                                   _______, _______,
                                             _______, _______,        _______, _______,
                                             _______, _______,        _______, _______,
                                             _______, _______,        _______, _______
@@ -281,21 +292,15 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 
         case LT_MN_E:
-            // clear keys used in other combianations
             if (!record->event.pressed) {
                 unregister_code(KC_LCMD);
-                layer_clear();
-                // layer_off(_L_MACOS_NUMPAD);
-                // layer_off(_L_APP1_FKEY);
+                layer_clear(); // reset layers for predictable behavior
             }
             break;
 
         case LT_SA_B:
-            // clear keys used in other combianations
             if (!record->event.pressed) {
-                layer_clear();
-                // layer_off(_R_SYM_ARROW);
-                // layer_off(_R_APP2_MOUSE);
+                layer_clear(); // reset layers for predictable behavior
             }
             break;
 
