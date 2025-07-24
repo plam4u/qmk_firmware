@@ -3,6 +3,7 @@
 #ifndef NO_ACTION_LAYER
 enum layer_names {
     _DF_QWERTY,
+    _DF_GAMING,
 
     _L_MACOS_NUMPAD,
     _L_APP1_FKEY,
@@ -17,6 +18,7 @@ enum layer_names {
     _EMPTY,
 };
 #define TO_QWER TO(_DF_QWERTY)
+#define TO_GAME TO(_DF_GAMING)
 #define LT_MN_E LT(_L_MACOS_NUMPAD, KC_ESC)
 #define LT_SA_B LT(_R_SYM_ARROW, KC_BSPC)
 #define LT_AM_E LT(_R_APP2_MOUSE, KC_ENT)
@@ -188,13 +190,25 @@ combo_t key_combos[] = {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_DF_QWERTY] = LAYOUT_5x6(
-        _______, REDO   , CUT    , COPY   , PASTE  , UNDO   ,        _______, KC_ESC , CTRL_C , _______, _______, _______,
+        _______, REDO   , CUT    , COPY   , PASTE  , UNDO   ,        TO_GAME, KC_ESC , CTRL_C , _______, _______, _______,
 
         ENT_HPR, KC_Q   , KC_W   , KC_E   , KC_R   , KC_T   ,        KC_Y   , KC_U   , KC_I   , KC_O   , KC_P   , KC_COLN,
         ESC_MEH, KC_A   , KC_S   , KC_D   , KC_F   , KC_G   ,        KC_H   , KC_J   , KC_K   , KC_L   , TD_CLN , KC_QUOT,
         ALT_TLD, CTL_Z  , KC_X   , KC_C   , KC_V   , KC_B   ,        KC_N   , KC_M   , KC_COMM, KC_DOT , CTL_SL , ALT_BSL,
                           KC_BSPC, KC_TAB ,                                            KC_EQL , KC_MINS,
                                             LT_MN_E, KC_SPC ,        LT_AM_E, LT_SA_B,
+                                            KC_LCTL, KC_LSFT,        OS_RSFT, OS_RCTL,
+                                            KC_LALT, KC_LGUI,        OS_RGUI, OS_LALT
+    ),
+
+    [_DF_GAMING] = LAYOUT_5x6(
+        _______, _______, _______, _______, _______, _______,        TO_QWER, _______, _______, _______, _______, _______,
+
+        KC_ESC , KC_T   , KC_Q   , KC_W   , KC_E   , KC_R   ,        KC_Y   , KC_U   , KC_I   , KC_O   , KC_P   , KC_COLN,
+        KC_TAB , KC_LSFT, KC_A   , KC_S   , KC_D   , KC_F   ,        KC_H   , KC_J   , KC_K   , KC_L   , TD_CLN , KC_QUOT,
+        KC_ENT , KC_LCTL, KC_Z   , KC_X   , KC_C   , KC_V   ,        KC_N   , KC_M   , KC_COMM, KC_DOT , CTL_SL , ALT_BSL,
+                          KC_BSPC, KC_TAB ,                                            KC_EQL , KC_MINS,
+                                            KC_ESC , KC_SPC ,        LT_AM_E, LT_SA_B,
                                             KC_LCTL, KC_LSFT,        OS_RSFT, OS_RCTL,
                                             KC_LALT, KC_LGUI,        OS_RGUI, OS_LALT
     ),
