@@ -2,20 +2,20 @@
 
 #ifndef NO_ACTION_LAYER
 enum layer_names {
-  _DF_QWERTY,
-  _DF_GAMING,
+    _DF_QWERTY,
+    _DF_GAMING,
 
-  _L_MACOS_NUMPAD,
-  _L_APP1_FKEY,
-  _L_SH_LETTER,
-  _L_SH_KEYPAD,
-  _L_SH_FKEY,
-  _L_SH_ARROW,
+    _L_MACOS_NUMPAD,
+    _L_APP1_FKEY,
+    _L_SH_LETTER,
+    _L_SH_KEYPAD,
+    _L_SH_FKEY,
+    _L_SH_ARROW,
 
-  _R_SYM_ARROW,
-  _R_APP2_MOUSE,
+    _R_SYM_ARROW,
+    _R_APP2_MOUSE,
 
-  _EMPTY,
+    _EMPTY,
 };
 #define TO_QWER TO(_DF_QWERTY)
 #define TO_GAME TO(_DF_GAMING)
@@ -34,9 +34,9 @@ enum layer_names {
 // We use it to as a folding region.
 
 enum custom_keycodes {
-  APPPREV = SAFE_RANGE,
-  APPNEXT,
-  SS_ASD
+    APPPREV = SAFE_RANGE,
+    APPNEXT,
+    SS_ASD
 };
 
 // Apps
@@ -130,51 +130,51 @@ enum custom_keycodes {
 #   define TD_CLN KC_SCLN
 #elif
 enum {
-  TD_SCLN_COLN,
+    TD_SCLN_COLN,
 };
 tap_dance_action_t tap_dance_actions[] = {
-  [TD_SCLN_COLN] = ACTION_TAP_DANCE_DOUBLE(KC_SCLN, KC_COLN),
+    [TD_SCLN_COLN] = ACTION_TAP_DANCE_DOUBLE(KC_SCLN, KC_COLN),
 };
 #   define TD_CLN TD(TD_SCLN_COLN)
 #endif
 
 #ifdef LEADER_ENABLE
 void leader_start_user(void) {
-  // Do something when the leader key is pressed
+    // Do something when the leader key is pressed
 }
 void leader_end_user(void) {
-  if (leader_sequence_one_key(REDO)) {
-    swap_hands_toggle();
-  }
-  else if (leader_sequence_two_keys(KC_D, KC_D)) {
-    SEND_STRING(SS_LCTL("a") SS_LCTL("c"));
-  }
-  else if (leader_sequence_three_keys(KC_D, KC_D, KC_S)) {
-    SEND_STRING("https://start.duckduckgo.com\n");
-  }
-  else if (leader_sequence_two_keys(KC_A, KC_S)) {
-    tap_code16(LGUI(KC_S));
-  }
+    if (leader_sequence_one_key(REDO)) {
+        swap_hands_toggle();
+    }
+    else if (leader_sequence_two_keys(KC_D, KC_D)) {
+        SEND_STRING(SS_LCTL("a") SS_LCTL("c"));
+    }
+    else if (leader_sequence_three_keys(KC_D, KC_D, KC_S)) {
+        SEND_STRING("https://start.duckduckgo.com\n");
+    }
+    else if (leader_sequence_two_keys(KC_A, KC_S)) {
+        tap_code16(LGUI(KC_S));
+    }
 }
 #endif
 
 #ifdef SWAP_HANDS_ENABLE
 const keypos_t PROGMEM hand_swap_config[MATRIX_ROWS][MATRIX_COLS] = {
-  // Left hand keys are swapped with right hand keys
-  {{0, 0}, {4, 6}, {3, 6}, {2, 6}, {1, 6}, {0, 6}},
-  {{5, 7}, {4, 7}, {3, 7}, {2, 7}, {1, 7}, {0, 7}},
-  {{5, 8}, {4, 8}, {3, 8}, {2, 8}, {1, 8}, {0, 8}},
-  {{5, 9}, {4, 9}, {3, 9}, {2, 9}, {1, 9}, {0, 9}},
-  {{0, 4}, {1, 4}, {2, 4}, {3, 4}, {4, 4}, {5, 4}},
-  {{0, 5}, {1, 5}, {2, 5}, {3, 5}, {4, 5}, {5, 5}},
+    // Left hand keys are swapped with right hand keys
+    {{0, 0}, {4, 6}, {3, 6}, {2, 6}, {1, 6}, {0, 6}},
+    {{5, 7}, {4, 7}, {3, 7}, {2, 7}, {1, 7}, {0, 7}},
+    {{5, 8}, {4, 8}, {3, 8}, {2, 8}, {1, 8}, {0, 8}},
+    {{5, 9}, {4, 9}, {3, 9}, {2, 9}, {1, 9}, {0, 9}},
+    {{0, 4}, {1, 4}, {2, 4}, {3, 4}, {4, 4}, {5, 4}},
+    {{0, 5}, {1, 5}, {2, 5}, {3, 5}, {4, 5}, {5, 5}},
 
-  // Right hand keys are swapped with left hand keys
-  {{5, 0}, {4, 0}, {3, 0}, {2, 0}, {1, 0}, {5, 6}},
-  {{5, 1}, {4, 1}, {3, 1}, {2, 1}, {1, 1}, {0, 1}},
-  {{5, 2}, {4, 2}, {3, 2}, {2, 2}, {1, 2}, {0, 2}},
-  {{5, 3}, {4, 3}, {3, 3}, {2, 3}, {1, 3}, {0, 3}},
-  {{0, 10}, {1, 10}, {2, 10}, {3, 10}, {10, 10}, {5, 10}},
-  {{0, 11}, {1, 11}, {2, 11}, {3, 11}, {4, 11}, {11, 11}},
+    // Right hand keys are swapped with left hand keys
+    {{5, 0}, {4, 0}, {3, 0}, {2, 0}, {1, 0}, {5, 6}},
+    {{5, 1}, {4, 1}, {3, 1}, {2, 1}, {1, 1}, {0, 1}},
+    {{5, 2}, {4, 2}, {3, 2}, {2, 2}, {1, 2}, {0, 2}},
+    {{5, 3}, {4, 3}, {3, 3}, {2, 3}, {1, 3}, {0, 3}},
+    {{0, 10}, {1, 10}, {2, 10}, {3, 10}, {10, 10}, {5, 10}},
+    {{0, 11}, {1, 11}, {2, 11}, {3, 11}, {4, 11}, {11, 11}},
 };
 #endif
 
@@ -182,234 +182,235 @@ const keypos_t PROGMEM hand_swap_config[MATRIX_ROWS][MATRIX_COLS] = {
 const uint16_t PROGMEM test_combo1[] = {KC_BSPC, KC_TAB, COMBO_END};
 const uint16_t PROGMEM test_combo2[] = {KC_J, KC_K, COMBO_END};
 combo_t key_combos[] = {
-  COMBO(test_combo1, KC_ENT),
-  COMBO(test_combo2, KC_ESC),
+    COMBO(test_combo1, KC_ENT),
+    COMBO(test_combo2, KC_ESC),
 };
 #endif
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-  [_DF_QWERTY] = LAYOUT_5x6(
-    _______, REDO   , CUT    , COPY   , PASTE  , UNDO   ,        TO_GAME, KC_ESC , CTRL_C , _______, _______, _______,
 
-    ENT_HPR, KC_Q   , KC_W   , KC_E   , KC_R   , KC_T   ,        KC_Y   , KC_U   , KC_I   , KC_O   , KC_P   , KC_COLN,
-    ESC_MEH, KC_A   , KC_S   , KC_D   , KC_F   , KC_G   ,        KC_H   , KC_J   , KC_K   , KC_L   , TD_CLN , KC_QUOT,
-    ALT_TLD, CTL_Z  , KC_X   , KC_C   , KC_V   , KC_B   ,        KC_N   , KC_M   , KC_COMM, KC_DOT , CTL_SL , ALT_BSL,
-    KC_BSPC, KC_TAB ,                                            KC_EQL , KC_MINS,
-    LT_MN_E, KC_SPC ,        LT_AM_E, LT_SA_B,
-    KC_LCTL, KC_LSFT,        OS_RSFT, OS_RCTL,
-    KC_LALT, KC_LGUI,        OS_RGUI, OS_LALT
-  ),
+    [_DF_QWERTY] = LAYOUT_5x6(
+        _______, REDO   , CUT    , COPY   , PASTE  , UNDO   ,        TO_GAME, KC_ESC , CTRL_C , _______, _______, _______,
 
-  [_DF_GAMING] = LAYOUT_5x6(
-    _______, KC_1   , KC_2   , KC_3   , KC_4   , KC_5   ,        TO_QWER, _______, _______, _______, _______, _______,
+        ENT_HPR, KC_Q   , KC_W   , KC_E   , KC_R   , KC_T   ,        KC_Y   , KC_U   , KC_I   , KC_O   , KC_P   , KC_COLN,
+        ESC_MEH, KC_A   , KC_S   , KC_D   , KC_F   , KC_G   ,        KC_H   , KC_J   , KC_K   , KC_L   , TD_CLN , KC_QUOT,
+        ALT_TLD, CTL_Z  , KC_X   , KC_C   , KC_V   , KC_B   ,        KC_N   , KC_M   , KC_COMM, KC_DOT , CTL_SL , ALT_BSL,
+                          KC_BSPC, KC_TAB ,                                            KC_EQL , KC_MINS,
+                                            LT_MN_E, KC_SPC ,        LT_AM_E, LT_SA_B,
+                                            KC_LCTL, KC_LSFT,        OS_RSFT, OS_RCTL,
+                                            KC_LALT, KC_LGUI,        OS_RGUI, OS_LALT
+    ),
 
-    KC_ENT , KC_T   , KC_Q   , KC_W   , KC_E   , KC_R   ,        KC_Y   , KC_U   , KC_I   , KC_O   , KC_P   , KC_COLN,
-    KC_ESC , KC_LSFT, KC_A   , KC_S   , KC_D   , KC_F   ,        KC_H   , KC_J   , KC_K   , KC_L   , TD_CLN , KC_QUOT,
-    KC_LALT, KC_LCTL, KC_Z   , KC_X   , KC_C   , KC_V   ,        KC_N   , KC_M   , KC_COMM, KC_DOT , CTL_SL , ALT_BSL,
-    KC_BSPC, KC_TAB ,                                            KC_EQL , KC_MINS,
-    KC_ESC , KC_SPC ,        LT_AM_E, LT_SA_B,
-    KC_LCTL, KC_LSFT,        OS_RSFT, OS_RCTL,
-    KC_LALT, KC_LGUI,        OS_RGUI, OS_LALT
-  ),
+    [_DF_GAMING] = LAYOUT_5x6(
+        _______, KC_1   , KC_2   , KC_3   , KC_4   , KC_5   ,        TO_QWER, _______, _______, _______, _______, _______,
 
-  [_L_MACOS_NUMPAD] = LAYOUT_5x6(
-    SS_ASD , CMD_01 , CMD_02 , CMD_03 , CMD_04 , CMD_05 ,        CMD_06 , CMD_07 , CMD_08 , CMD_09 , CMD_00 , QK_BOOT,
+        KC_ENT , KC_T   , KC_Q   , KC_W   , KC_E   , KC_R   ,        KC_Y   , KC_U   , KC_I   , KC_O   , KC_P   , KC_COLN,
+        KC_ESC , KC_LSFT, KC_A   , KC_S   , KC_D   , KC_F   ,        KC_H   , KC_J   , KC_K   , KC_L   , TD_CLN , KC_QUOT,
+        KC_LALT, KC_LCTL, KC_Z   , KC_X   , KC_C   , KC_V   ,        KC_N   , KC_M   , KC_COMM, KC_DOT , CTL_SL , ALT_BSL,
+                          KC_BSPC, KC_TAB ,                                            KC_EQL , KC_MINS,
+                                            KC_ESC , KC_SPC ,        LT_AM_E, LT_SA_B,
+                                            KC_LCTL, KC_LSFT,        OS_RSFT, OS_RCTL,
+                                            KC_LALT, KC_LGUI,        OS_RGUI, OS_LALT
+    ),
 
-    FOCUS  , APPQUIT, TABPREV, BACK   , FORWARD, TABNEXT,        KC_SLSH, KC_7   , KC_8   , KC_9   , KC_0   , _______,
-    ITERM  , ALFRED , ACCENT , APPPREV, APPNEXT, HIDEAPP,        KC_ASTR, KC_4   , KC_5   , KC_6   , KC_COLN, _______,
-    APPWINS, OS_LCTL, OS_LSFT, OS_LALT, OS_LGUI, CLIPBRD,        KC_EQL , KC_1   , KC_2   , KC_3   , KC_DOT , _______,
-    TG_SHLT, TG_SHAR,                                            KC_PLUS, KC_MINS,
-    _______, TO_APFK,        _______, _______,
-    _______, _______,        _______, _______,
-    _______, _______,        _______, _______
-  ),
+    [_L_MACOS_NUMPAD] = LAYOUT_5x6(
+        SS_ASD , CMD_01 , CMD_02 , CMD_03 , CMD_04 , CMD_05 ,        CMD_06 , CMD_07 , CMD_08 , CMD_09 , CMD_00 , QK_BOOT,
 
-  [_L_SH_LETTER] = LAYOUT_5x6(
-    TO_QWER, _______, _______, _______, _______, _______,        _______, _______, _______, _______, _______, _______,
+        FOCUS  , APPQUIT, TABPREV, BACK   , FORWARD, TABNEXT,        KC_SLSH, KC_7   , KC_8   , KC_9   , KC_0   , _______,
+        ITERM  , ALFRED , ACCENT , APPPREV, APPNEXT, HIDEAPP,        KC_ASTR, KC_4   , KC_5   , KC_6   , KC_COLN, _______,
+        APPWINS, OS_LCTL, OS_LSFT, OS_LALT, OS_LGUI, CLIPBRD,        KC_EQL , KC_1   , KC_2   , KC_3   , KC_DOT , _______,
+                          TG_SHLT, TG_SHAR,                                            KC_PLUS, KC_MINS,
+                                            _______, TO_APFK,        _______, _______,
+                                            _______, _______,        _______, _______,
+                                            _______, _______,        _______, _______
+    ),
 
-    _______, KC_P   , KC_O   , KC_I   , KC_U   , KC_Y   ,        KC_T   , KC_R   , KC_E   , KC_W   , KC_Q   , _______,
-    _______, KC_SCLN, KC_L   , KC_K   , KC_J   , KC_H   ,        KC_G   , KC_F   , KC_D   , KC_S   , KC_A   , _______,
-    _______, KC_SLSH, KC_DOT , KC_COMM, KC_M   , KC_N   ,        KC_B   , KC_V   , KC_C   , KC_X   , KC_Z   , _______,
-    TG_SHKP, TG_SHFK,                                            _______, _______,
-    _______, _______,        _______, _______,
-    _______, _______,        _______, _______,
-    _______, _______,        _______, _______
-  ),
+    [_L_SH_LETTER] = LAYOUT_5x6(
+        TO_QWER, _______, _______, _______, _______, _______,        _______, _______, _______, _______, _______, _______,
 
-  [_L_SH_KEYPAD] = LAYOUT_5x6(
-    TO_QWER, _______, KC_1   , KC_2   , KC_3   , _______,        _______, _______, _______, _______, _______, _______,
+        _______, KC_P   , KC_O   , KC_I   , KC_U   , KC_Y   ,        KC_T   , KC_R   , KC_E   , KC_W   , KC_Q   , _______,
+        _______, KC_SCLN, KC_L   , KC_K   , KC_J   , KC_H   ,        KC_G   , KC_F   , KC_D   , KC_S   , KC_A   , _______,
+        _______, KC_SLSH, KC_DOT , KC_COMM, KC_M   , KC_N   ,        KC_B   , KC_V   , KC_C   , KC_X   , KC_Z   , _______,
+                          TG_SHKP, TG_SHFK,                                            _______, _______,
+                                            _______, _______,        _______, _______,
+                                            _______, _______,        _______, _______,
+                                            _______, _______,        _______, _______
+    ),
 
-    KC_PDOT, KC_PEQL, KC_KP_7, KC_KP_8, KC_KP_9, KC_KP_0,        _______, _______, _______, _______, _______, _______,
-    KC_HOME, KC_PAST, KC_KP_4, KC_KP_5, KC_KP_6, KC_PMNS,        _______, _______, _______, _______, _______, _______,
-    _______, KC_PSLS, KC_KP_1, KC_KP_2, KC_KP_3, KC_PPLS,        _______, _______, _______, _______, _______, _______,
-    _______, _______,                                   _______, _______,
-    _______, _______,        _______, _______,
-    _______, _______,        _______, _______,
-    _______, _______,        _______, _______
-  ),
+    [_L_SH_KEYPAD] = LAYOUT_5x6(
+        TO_QWER, _______, KC_1   , KC_2   , KC_3   , _______,        _______, _______, _______, _______, _______, _______,
 
-  [_L_SH_FKEY] = LAYOUT_5x6(
-    TO_QWER, _______, _______, _______, _______, _______,        _______, _______, _______, _______, _______, _______,
+        KC_PDOT, KC_PEQL, KC_KP_7, KC_KP_8, KC_KP_9, KC_KP_0,        _______, _______, _______, _______, _______, _______,
+        KC_HOME, KC_PAST, KC_KP_4, KC_KP_5, KC_KP_6, KC_PMNS,        _______, _______, _______, _______, _______, _______,
+        _______, KC_PSLS, KC_KP_1, KC_KP_2, KC_KP_3, KC_PPLS,        _______, _______, _______, _______, _______, _______,
+                          _______, _______,                                   _______, _______,
+                                            _______, _______,        _______, _______,
+                                            _______, _______,        _______, _______,
+                                            _______, _______,        _______, _______
+    ),
 
-    _______, _______, KC_F7  , KC_F8  , KC_F9  , _______,        _______, _______, _______, _______, _______, _______,
-    _______, _______, KC_F4  , KC_F5  , KC_F6  , _______,        _______, _______, _______, _______, _______, _______,
-    _______, _______, KC_F1  , KC_F2  , KC_F3  , _______,        _______, _______, _______, _______, _______, _______,
-    _______, _______,                                   _______, _______,
-    _______, _______,        _______, _______,
-    _______, _______,        _______, _______,
-    _______, _______,        _______, _______
-  ),
+    [_L_SH_FKEY] = LAYOUT_5x6(
+        TO_QWER, _______, _______, _______, _______, _______,        _______, _______, _______, _______, _______, _______,
 
-  [_L_SH_ARROW] = LAYOUT_5x6(
-    TO_QWER, _______, _______, _______, _______, _______,        _______, _______, _______, _______, _______, _______,
+        _______, _______, KC_F7  , KC_F8  , KC_F9  , _______,        _______, _______, _______, _______, _______, _______,
+        _______, _______, KC_F4  , KC_F5  , KC_F6  , _______,        _______, _______, _______, _______, _______, _______,
+        _______, _______, KC_F1  , KC_F2  , KC_F3  , _______,        _______, _______, _______, _______, _______, _______,
+                          _______, _______,                                   _______, _______,
+                                            _______, _______,        _______, _______,
+                                            _______, _______,        _______, _______,
+                                            _______, _______,        _______, _______
+    ),
 
-    _______, _______, PB_10  , KC_UP  , KC_MPLY, _______,        _______, _______, _______, _______, _______, _______,
-    _______, _______, KC_LEFT, KC_DOWN, KC_RGHT, _______,        _______, _______, _______, _______, _______, _______,
-    _______, _______, KC_BSPC, KC_ENT , KC_DEL , _______,        _______, _______, _______, _______, _______, _______,
-    _______, _______,                                   _______, _______,
-    _______, _______,        _______, _______,
-    _______, _______,        _______, _______,
-    _______, _______,        _______, _______
-  ),
+    [_L_SH_ARROW] = LAYOUT_5x6(
+        TO_QWER, _______, _______, _______, _______, _______,        _______, _______, _______, _______, _______, _______,
 
-  [_L_APP1_FKEY] = LAYOUT_5x6(
-    _______, _______, _______, _______, _______, _______,        _______, _______, _______, _______, _______, _______,
+        _______, _______, PB_10  , KC_UP  , KC_MPLY, _______,        _______, _______, _______, _______, _______, _______,
+        _______, _______, KC_LEFT, KC_DOWN, KC_RGHT, _______,        _______, _______, _______, _______, _______, _______,
+        _______, _______, KC_BSPC, KC_ENT , KC_DEL , _______,        _______, _______, _______, _______, _______, _______,
+                          _______, _______,                                   _______, _______,
+                                            _______, _______,        _______, _______,
+                                            _______, _______,        _______, _______,
+                                            _______, _______,        _______, _______
+    ),
 
-    _______, APP01  , APP02  , APP03  , APP04  , APP05  ,        DM_PLY1, KC_F7  , KC_F8  , KC_F9  , KC_F12 , _______,
-    _______, APP06  , APP07  , APP08  , APP09  , APP10  ,        DM_RSTP, KC_F4  , KC_F5  , KC_F6  , KC_F11 , _______,
-    _______, OS_LCTL, OS_LSFT, OS_LALT, OS_LGUI, CENTER ,        DM_REC1, KC_F1  , KC_F2  , KC_F3  , KC_F10 , _______,
-    _______, _______,                                            _______, _______,
-    _______, _______,        _______, _______,
-    _______, _______,        _______, _______,
-    _______, _______,        _______, _______
-  ),
+    [_L_APP1_FKEY] = LAYOUT_5x6(
+        _______, _______, _______, _______, _______, _______,        _______, _______, _______, _______, _______, _______,
 
-  [_R_SYM_ARROW] = LAYOUT_5x6(
-    _______, _______, _______, _______, _______, _______,        _______, _______, _______, _______, _______, _______,
+        _______, APP01  , APP02  , APP03  , APP04  , APP05  ,        DM_PLY1, KC_F7  , KC_F8  , KC_F9  , KC_F12 , _______,
+        _______, APP06  , APP07  , APP08  , APP09  , APP10  ,        DM_RSTP, KC_F4  , KC_F5  , KC_F6  , KC_F11 , _______,
+        _______, OS_LCTL, OS_LSFT, OS_LALT, OS_LGUI, CENTER ,        DM_REC1, KC_F1  , KC_F2  , KC_F3  , KC_F10 , _______,
+                          _______, _______,                                            _______, _______,
+                                            _______, _______,        _______, _______,
+                                            _______, _______,        _______, _______,
+                                            _______, _______,        _______, _______
+    ),
 
-    KC_QUES, KC_PERC, KC_AT  , KC_LCBR, KC_RCBR, KC_CIRC,        SG_LBRC, KC_MPLY, KC_MNXT, SG_RBRC, _______, _______,
-    KC_EXLM, KC_UNDS, KC_AMPR, KC_LPRN, KC_RPRN, KC_DLR ,        KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT, _______, _______,
-    KC_TILD, KC_HASH, KC_PIPE, KC_LBRC, KC_RBRC, KC_ASTR,        _______, KC_BSPC, KC_ENT , KC_DEL , _______, _______,
-    _______, _______,                                            _______, _______,
-    _______, _______,        _______, _______,
-    _______, _______,        _______, _______,
-    _______, _______,        _______, _______
-  ),
+     [_R_SYM_ARROW] = LAYOUT_5x6(
+        _______, _______, _______, _______, _______, _______,        _______, _______, _______, _______, _______, _______,
 
-  [_R_APP2_MOUSE] = LAYOUT_5x6(
-    _______, _______, _______, _______, _______, _______,        _______, _______, _______, _______, _______, _______,
+        KC_QUES, KC_PERC, KC_AT  , KC_LCBR, KC_RCBR, KC_CIRC,        SG_LBRC, KC_MPLY, KC_MNXT, SG_RBRC, _______, _______,
+        KC_EXLM, KC_UNDS, KC_AMPR, KC_LPRN, KC_RPRN, KC_DLR ,        KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT, _______, _______,
+        KC_TILD, KC_HASH, KC_PIPE, KC_LBRC, KC_RBRC, KC_ASTR,        _______, KC_BSPC, KC_ENT , KC_DEL , _______, _______,
+                          _______, _______,                                            _______, _______,
+                                            _______, _______,        _______, _______,
+                                            _______, _______,        _______, _______,
+                                            _______, _______,        _______, _______
+    ),
 
-    _______, APP11  , APP12  , APP13  , APP14  , APP15  ,        _______, KC_BTN1, KC_BTN3, KC_BTN2, _______, _______,
-    _______, KC_ACL2, KC_ACL2, KC_ACL1, KC_ACL0, _______,        KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, _______, _______,
-    _______, APP16  , APP17  , APP18  , APP19  , APP20  ,        KC_WH_R, KC_WH_U, KC_WH_D, KC_WH_L, _______, _______,
-    _______, _______,                                            _______, _______,
-    _______, _______,        _______, _______,
-    _______, _______,        _______, _______,
-    _______, _______,        _______, _______
-  ),
+    [_R_APP2_MOUSE] = LAYOUT_5x6(
+        _______, _______, _______, _______, _______, _______,        _______, _______, _______, _______, _______, _______,
 
-  [_EMPTY] = LAYOUT_5x6(
-    _______, _______, _______, _______, _______, _______,        _______, _______, _______, _______, _______, _______,
+        _______, APP11  , APP12  , APP13  , APP14  , APP15  ,        _______, KC_BTN1, KC_BTN3, KC_BTN2, _______, _______,
+        _______, KC_ACL2, KC_ACL2, KC_ACL1, KC_ACL0, _______,        KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, _______, _______,
+        _______, APP16  , APP17  , APP18  , APP19  , APP20  ,        KC_WH_R, KC_WH_U, KC_WH_D, KC_WH_L, _______, _______,
+                          _______, _______,                                            _______, _______,
+                                            _______, _______,        _______, _______,
+                                            _______, _______,        _______, _______,
+                                            _______, _______,        _______, _______
+    ),
 
-    _______, _______, _______, _______, _______, _______,        _______, _______, _______, _______, _______, _______,
-    _______, _______, _______, _______, _______, _______,        _______, _______, _______, _______, _______, _______,
-    _______, _______, _______, _______, _______, _______,        _______, _______, _______, _______, _______, _______,
-    _______, _______,                                            _______, _______,
-    _______, _______,        _______, _______,
-    _______, _______,        _______, _______,
-    _______, _______,        _______, _______
-  ),
+    [_EMPTY] = LAYOUT_5x6(
+        _______, _______, _______, _______, _______, _______,        _______, _______, _______, _______, _______, _______,
+
+        _______, _______, _______, _______, _______, _______,        _______, _______, _______, _______, _______, _______,
+        _______, _______, _______, _______, _______, _______,        _______, _______, _______, _______, _______, _______,
+        _______, _______, _______, _______, _______, _______,        _______, _______, _______, _______, _______, _______,
+                          _______, _______,                                            _______, _______,
+                                            _______, _______,        _______, _______,
+                                            _______, _______,        _______, _______,
+                                            _______, _______,        _______, _______
+    ),
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
-  switch (keycode) {
+    switch (keycode) {
 
-    case SS_ASD:
-      if (record->event.pressed) {
-        SEND_STRING("$init(asdasd)\n");
-      }
-      return false;
+        case SS_ASD:
+            if (record->event.pressed) {
+                SEND_STRING("$init(asdasd)\n");
+            }
+            return false;
 
 
-    case LT_MN_E:
-      if (!record->event.pressed) {
-        unregister_code(KC_LCMD);
-        layer_clear(); // reset layers for predictable behavior
-      }
-      break;
+        case LT_MN_E:
+            if (!record->event.pressed) {
+                unregister_code(KC_LCMD);
+                layer_clear(); // reset layers for predictable behavior
+            }
+            break;
 
-    case LT_SA_B:
-      if (!record->event.pressed) {
-        layer_clear(); // reset layers for predictable behavior
-      }
-      break;
+        case LT_SA_B:
+            if (!record->event.pressed) {
+                layer_clear(); // reset layers for predictable behavior
+            }
+            break;
 
-    case APPPREV:
-      if (record->event.pressed) {
-        register_code(KC_LCMD);
-        register_code(KC_LSFT);
-        register_code(KC_TAB);
-      } else {
-        unregister_code(KC_TAB);
-        unregister_code(KC_LSFT);
-      }
-      return false;
+        case APPPREV:
+            if (record->event.pressed) {
+                register_code(KC_LCMD);
+                register_code(KC_LSFT);
+                register_code(KC_TAB);
+            } else {
+                unregister_code(KC_TAB);
+                unregister_code(KC_LSFT);
+            }
+            return false;
 
-    case APPNEXT:
-      if (record->event.pressed) {
-        unregister_code(KC_LSFT);
-        register_code(KC_LCMD);
-        register_code(KC_TAB);
-      } else {
-        unregister_code(KC_TAB);
-      }
-      return false;
-  }
+        case APPNEXT:
+            if (record->event.pressed) {
+                unregister_code(KC_LSFT);
+                register_code(KC_LCMD);
+                register_code(KC_TAB);
+            } else {
+                unregister_code(KC_TAB);
+            }
+            return false;
+    }
 
-  return true;
+    return true;
 };
 
 bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
-  switch (keycode) {
+    switch (keycode) {
 
-    case ALT_TLD:
-    case ENT_HPR:
-    case LT_MN_E:
-    case LT_SA_B:
-    case ALT_BSL:
-    case ENT_CTL:
-    case LT_AM_E:
-    case TG_SHLT:
-      // Immediately select the hold action when another key is pressed.
-      return true;
+        case ALT_TLD:
+        case ENT_HPR:
+        case LT_MN_E:
+        case LT_SA_B:
+        case ALT_BSL:
+        case ENT_CTL:
+        case LT_AM_E:
+        case TG_SHLT:
+            // Immediately select the hold action when another key is pressed.
+            return true;
 
-    case CTL_Z:
-    case CTL_SL:
-      // Press the key instead holding it when another key is pressed.
-      return false;
+        case CTL_Z:
+        case CTL_SL:
+            // Press the key instead holding it when another key is pressed.
+            return false;
 
-    default:
-      // Do not select the hold action when another key is pressed.
-      return false;
-  }
+        default:
+            // Do not select the hold action when another key is pressed.
+            return false;
+    }
 }
 
 bool get_tapping_force_hold(uint16_t keycode, keyrecord_t *record) {
-  switch (keycode) {
-    case SPC_SFT:
-    case TAB_SFT:
-    case ENT_CTL:
-    case BSP_CMD:
-    case ENT_SFT:
-      return true;
+    switch (keycode) {
+        case SPC_SFT:
+        case TAB_SFT:
+        case ENT_CTL:
+        case BSP_CMD:
+        case ENT_SFT:
+            return true;
 
-    // case SPC_SFT:
-    //     // press the key instead of holding it when another key is pressed
-    //     return false;
+        // case SPC_SFT:
+        //     // press the key instead of holding it when another key is pressed
+        //     return false;
 
-    default:
-      return false;
-  }
+        default:
+            return false;
+    }
 }
 
