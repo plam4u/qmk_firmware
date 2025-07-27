@@ -1,4 +1,5 @@
 #include QMK_KEYBOARD_H
+#include "print.h"
 
 #ifndef NO_ACTION_LAYER
 enum layer_names {
@@ -308,6 +309,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+#ifdef CONSOLE_ENABLE
+    uprintf("kc: %04X, row: %u, col: %u, pressed: %u, time: %u\n",
+            keycode, record->event.key.row, record->event.key.col,
+            record->event.pressed, record->event.time);
+#endif
+
   uint8_t os_locked_mods = get_oneshot_locked_mods();
 
     switch (keycode) {
