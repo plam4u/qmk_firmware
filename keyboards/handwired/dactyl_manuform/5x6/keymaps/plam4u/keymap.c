@@ -308,32 +308,78 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 };
 
+#ifdef CONSOLE_ENABLE
+void keyboard_post_init_user(void) {
+  // Customise these values to desired behaviour
+  debug_enable=true;
+  // debug_matrix=true;
+  // debug_keyboard=true;
+  // debug_mouse=true;
+}
+#endif
+
+void clear_all_mods(void) {
+    clear_mods();
+    clear_weak_mods();
+    clear_oneshot_locked_mods();
+    clear_oneshot_mods();
+    clear_oneshot_layer_state(ONESHOT_OTHER_KEY_PRESSED);
+    unregister_code(KC_LCTL);
+    unregister_code(KC_LSFT);
+    unregister_code(KC_LALT);
+    unregister_code(KC_LCMD);
+    unregister_code(KC_RCTL);
+    unregister_code(KC_RSFT);
+    unregister_code(KC_RALT);
+    unregister_code(KC_RCMD);
+}
+
+void clear_mods_on_keypress(uint16_t keycode, keyrecord_t *record) {
+    bool is_std_mod = keycode == KC_LCTL || keycode == KC_RCTL
+                   || keycode == KC_LSFT || keycode == KC_RSFT
+                   || keycode == KC_LALT || keycode == KC_RALT
+                   || keycode == KC_LGUI || keycode == KC_RGUI;
+
+    bool is_osm_key = keycode == OS_LCTL || keycode == OS_RCTL
+                   || keycode == OS_LSFT || keycode == OS_RSFT
+                   || keycode == OS_LALT || keycode == OS_RALT
+                   || keycode == OS_LGUI || keycode == OS_RGUI;
+
+    if (!record->event.pressed) {
+        return;
+    }
+
+    if (is_std_mod || is_osm_key) {
+        return;
+    }
+
+    clear_all_mods();
+}
+
+static bool clear_oneshot_next = false;
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 #ifdef CONSOLE_ENABLE
     uprintf("kc: %04X, row: %u, col: %u, pressed: %u, time: %u\n",
             keycode, record->event.key.row, record->event.key.col,
             record->event.pressed, record->event.time);
+    // dprintf("keycode 0x%04X mod? %u, osm? %u, pendingos? %u, lockedos? %u\n",
+    //         keycode, is_std_mod, is_osm_key, has_pending_oneshot, has_locked_oneshot);
 #endif
 
-  uint8_t os_locked_mods = get_oneshot_locked_mods();
+    // Clear oneshot mods if flagged from previous key
+    if (clear_oneshot_next && record->event.pressed) {
+        clear_oneshot_mods();
+        clear_oneshot_next = false;
+    }
+
+    uint8_t os_locked_mods = get_oneshot_locked_mods();
 
     switch (keycode) {
 
         case CLR_MOD:
             if (record->event.pressed) {
-                clear_mods();
-                clear_weak_mods();
-                clear_oneshot_locked_mods();
-                clear_oneshot_mods();
-                clear_oneshot_layer_state(ONESHOT_OTHER_KEY_PRESSED);
-                unregister_code(KC_LCTL);
-                unregister_code(KC_LSFT);
-                unregister_code(KC_LALT);
-                unregister_code(KC_LCMD);
-                unregister_code(KC_RCTL);
-                unregister_code(KC_RSFT);
-                unregister_code(KC_RALT);
-                unregister_code(KC_RCMD);
+                clear_all_mods();
             }
             return false;
 
@@ -381,8 +427,18 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             return false;
     }
 
-  return true;
-};
+    // For all other keys (letters, numbers, etc.), clear oneshot after press
+    if (record->event.pressed) {
+        bool is_mod_key = (keycode >= OS_LCTL && keycode <= OS_RGUI) ||
+                         (keycode >= KC_LCTL && keycode <= KC_RGUI);
+
+        if (!is_mod_key) {
+            clear_oneshot_next = true;
+        }
+    }
+
+    return true;
+}
 
 bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
