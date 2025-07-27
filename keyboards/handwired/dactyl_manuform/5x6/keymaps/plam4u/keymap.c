@@ -241,7 +241,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [_R_SYMBOLS] = LAYOUT_5x6(
-    _______, _______, _______, _______, _______, _______,        _______, _______, _______, _______, _______, _______,
+    _______, _______, _______, _______, _______, _______,        _______, KC_ACL0, KC_ACL1, KC_ACL2, _______, _______,
     KC_QUES, KC_PERC, KC_AT  , KC_LCBR, KC_RCBR, KC_CIRC,        KC_BTN3, KC_BTN1, KC_MS_U, KC_BTN2, _______, _______,
     KC_EXLM, KC_UNDS, KC_AMPR, KC_LPRN, KC_RPRN, KC_DLR ,        KC_WH_R, KC_MS_L, KC_MS_D, KC_MS_R, KC_WH_L, _______,
     KC_TILD, KC_HASH, KC_PIPE, KC_LBRC, KC_RBRC, KC_ASTR,        _______, KC_WH_U, KC_WH_D, _______, _______, _______,

@@ -7,6 +7,9 @@
 #define TAPPING_TOGGLE 2
 #define TAPPING_FORCE_HOLD_PER_KEY
 
+#define ONESHOT_TAP_TOGGLE 2  /* Tapping this number of times holds the key until tapped once again. */
+#define ONESHOT_TIMEOUT 5000  /* Time (in ms) before the one shot key is released */
+
 #define HOLD_ON_OTHER_KEY_PRESS_PER_KEY
 
 #define LEADER_PER_KEY_TIMING
