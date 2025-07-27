@@ -44,7 +44,7 @@ enum custom_keycodes {
     APPPREV = SAFE_RANGE,
     APPNEXT,
     SS_ASD,
-    CLR_OSM
+    CLR_MOD
 };
 
 // Apps
@@ -197,7 +197,7 @@ combo_t key_combos[] = {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_BASE] = LAYOUT_5x6(
-    _______, OS_LCTL, OS_LSFT, OS_LALT, OS_LGUI, CLR_OSM,        TO_QWER, OS_RGUI, OS_RALT, OS_RSFT, OS_RCTL, TO_GAME,
+    _______, OS_LCTL, OS_LSFT, OS_LALT, OS_LGUI, CLR_MOD,        TO_QWER, OS_RGUI, OS_RALT, OS_RSFT, OS_RCTL, TO_GAME,
     ENT_HPR, KC_Q   , KC_W   , KC_E   , KC_R   , KC_T   ,        KC_Y   , KC_U   , KC_I   , KC_O   , KC_P   , KC_COLN,
     ESC_MEH, KC_A   , KC_S   , KC_D   , KC_F   , KC_G   ,        KC_H   , KC_J   , KC_K   , KC_L   , TD_CLN , KC_QUOT,
     ALT_TLD, CTL_Z  , KC_X   , KC_C   , KC_V   , KC_B   ,        KC_N   , KC_M   , KC_COMM, KC_DOT , CTL_SL , ALT_BSL,
@@ -312,10 +312,21 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
     switch (keycode) {
 
-        case CLR_OSM:
+        case CLR_MOD:
             if (record->event.pressed) {
+                clear_mods();
+                clear_weak_mods();
                 clear_oneshot_locked_mods();
                 clear_oneshot_mods();
+                clear_oneshot_layer_state(ONESHOT_OTHER_KEY_PRESSED);
+                unregister_code(KC_LCTL);
+                unregister_code(KC_LSFT);
+                unregister_code(KC_LALT);
+                unregister_code(KC_LCMD);
+                unregister_code(KC_RCTL);
+                unregister_code(KC_RSFT);
+                unregister_code(KC_RALT);
+                unregister_code(KC_RCMD);
             }
             return false;
 
