@@ -334,30 +334,6 @@ void clear_all_mods(void) {
     unregister_code(KC_RCMD);
 }
 
-void clear_mods_on_keypress(uint16_t keycode, keyrecord_t *record) {
-    bool is_std_mod = keycode == KC_LCTL || keycode == KC_RCTL
-                   || keycode == KC_LSFT || keycode == KC_RSFT
-                   || keycode == KC_LALT || keycode == KC_RALT
-                   || keycode == KC_LGUI || keycode == KC_RGUI;
-
-    bool is_osm_key = keycode == OS_LCTL || keycode == OS_RCTL
-                   || keycode == OS_LSFT || keycode == OS_RSFT
-                   || keycode == OS_LALT || keycode == OS_RALT
-                   || keycode == OS_LGUI || keycode == OS_RGUI;
-
-    if (!record->event.pressed) {
-        return;
-    }
-
-    if (is_std_mod || is_osm_key) {
-        return;
-    }
-
-    clear_all_mods();
-}
-
-static bool clear_oneshot_next = false;
-
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 #ifdef CONSOLE_ENABLE
     uprintf("kc: %04X, row: %u, col: %u, pressed: %u, time: %u\n",
@@ -366,12 +342,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     // dprintf("keycode 0x%04X mod? %u, osm? %u, pendingos? %u, lockedos? %u\n",
     //         keycode, is_std_mod, is_osm_key, has_pending_oneshot, has_locked_oneshot);
 #endif
-
-    // Clear oneshot mods if flagged from previous key
-    if (clear_oneshot_next && record->event.pressed) {
-        clear_oneshot_mods();
-        clear_oneshot_next = false;
-    }
 
     uint8_t os_locked_mods = get_oneshot_locked_mods();
 
@@ -425,16 +395,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 unregister_code(KC_TAB);
             }
             return false;
-    }
-
-    // For all other keys (letters, numbers, etc.), clear oneshot after press
-    if (record->event.pressed) {
-        bool is_mod_key = (keycode >= OS_LCTL && keycode <= OS_RGUI) ||
-                         (keycode >= KC_LCTL && keycode <= KC_RGUI);
-
-        if (!is_mod_key) {
-            clear_oneshot_next = true;
-        }
     }
 
     return true;
