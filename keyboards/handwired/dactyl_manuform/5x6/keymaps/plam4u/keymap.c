@@ -1,6 +1,5 @@
 #include QMK_KEYBOARD_H
 #include "print.h"
-#include "oneshot.h"
 
 #ifndef NO_ACTION_LAYER
 enum layer_names {
@@ -46,11 +45,7 @@ enum custom_keycodes {
     APPPREV = SAFE_RANGE,
     APPNEXT,
     SS_ASD,
-    CLR_MOD,
-    OS_C,
-    OS_S,
-    OS_A,
-    OS_G
+    CLR_MOD
 };
 
 // Apps
@@ -203,7 +198,7 @@ combo_t key_combos[] = {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_BASE] = LAYOUT_5x6(
-    _______, OS_C   , OS_S   , OS_A   , OS_G   , CLR_MOD,        TO_QWER, OS_G   , OS_A   , OS_S   , OS_C   , TO_GAME,
+    _______, OS_LCTL, OS_LSFT, OS_LALT, OS_LGUI, CLR_MOD,        TO_QWER, OS_LGUI, OS_LALT, OS_LSFT, OS_LCTL, TO_GAME,
     ENT_HPR, KC_Q   , KC_W   , KC_E   , KC_R   , KC_T   ,        KC_Y   , KC_U   , KC_I   , KC_O   , KC_P   , KC_COLN,
     ESC_MEH, KC_A   , KC_S   , KC_D   , KC_F   , KC_G   ,        KC_H   , KC_J   , KC_K   , KC_L   , TD_CLN , KC_QUOT,
     ALT_TLD, CTL_Z  , KC_X   , KC_C   , KC_V   , KC_B   ,        KC_N   , KC_M   , KC_COMM, KC_DOT , CTL_SL , ALT_BSL,
@@ -339,47 +334,6 @@ void clear_all_mods(void) {
     unregister_code(KC_RCMD);
 }
 
-bool is_oneshot_cancel_key(uint16_t keycode) {
-    switch (keycode) {
-    case CLR_MOD:
-        return true;
-    default:
-        return false;
-    }
-}
-
-bool is_oneshot_ignored_key(uint16_t keycode) {
-    switch (keycode) {
-    case LT_NP_E:
-    case LT_AR_B:
-    case LT_MOUS:
-    case TO_FPAD:
-
-    case KC_LCTL:
-    case KC_LSFT:
-    case KC_LALT:
-    case KC_LGUI:
-
-    case OS_LCTL:
-    case OS_LSFT:
-    case OS_LALT:
-    case OS_LGUI:
-
-    case OS_C:
-    case OS_S:
-    case OS_A:
-    case OS_G:
-        return true;
-    default:
-        return false;
-    }
-}
-
-oneshot_state os_shft_state = os_up_unqueued;
-oneshot_state os_ctrl_state = os_up_unqueued;
-oneshot_state os_alt_state = os_up_unqueued;
-oneshot_state os_cmd_state = os_up_unqueued;
-
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 #ifdef CONSOLE_ENABLE
     uprintf("kc: %04X, row: %u, col: %u, pressed: %u, time: %u\n",
@@ -387,30 +341,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             record->event.pressed, record->event.time);
 #endif
 
-    // if (!is_oneshot_ignored_key(keycode)) {
-    //     tap_code16(keycode);
-    //     clear_all_mods();
-    //     return false;
-    // }
-
     uint8_t os_locked_mods = get_oneshot_locked_mods();
-
-    update_oneshot(
-        &os_shft_state, KC_LSFT, OS_S,
-        keycode, record
-    );
-    update_oneshot(
-        &os_ctrl_state, KC_LCTL, OS_C,
-        keycode, record
-    );
-    update_oneshot(
-        &os_alt_state, KC_LALT, OS_A,
-        keycode, record
-    );
-    update_oneshot(
-        &os_cmd_state, KC_LCMD, OS_G,
-        keycode, record
-    );
 
     switch (keycode) {
 
@@ -425,7 +356,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 SEND_STRING("$init(asdasd)\n");
             }
             return false;
-
 
         case LT_NP_E:
             if (!record->event.pressed) {
