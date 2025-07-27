@@ -197,7 +197,7 @@ combo_t key_combos[] = {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_BASE] = LAYOUT_5x6(
-    _______, UNDO   , CUT    , COPY   , PASTE  , REDO   ,        TO_QWER, _______, CTRL_C , _______, _______, TO_GAME,
+    _______, _______, _______, _______, _______, _______,        TO_QWER, _______, _______, _______, _______, TO_GAME,
     ENT_HPR, KC_Q   , KC_W   , KC_E   , KC_R   , KC_T   ,        KC_Y   , KC_U   , KC_I   , KC_O   , KC_P   , KC_COLN,
     ESC_MEH, KC_A   , KC_S   , KC_D   , KC_F   , KC_G   ,        KC_H   , KC_J   , KC_K   , KC_L   , TD_CLN , KC_QUOT,
     ALT_TLD, CTL_Z  , KC_X   , KC_C   , KC_V   , KC_B   ,        KC_N   , KC_M   , KC_COMM, KC_DOT , CTL_SL , ALT_BSL,
@@ -308,6 +308,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+  uint8_t os_locked_mods = get_oneshot_locked_mods();
 
     switch (keycode) {
 
@@ -320,7 +321,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case LT_NP_E:
             if (!record->event.pressed) {
-                unregister_code(KC_LCMD);
+                if (!(os_locked_mods & MOD_MASK_GUI)) {
+                    unregister_code(KC_LCMD);
+                }
                 layer_clear(); // reset layers for predictable behavior
             }
             break;
@@ -353,7 +356,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             return false;
     }
 
-    return true;
+  return true;
 };
 
 bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
