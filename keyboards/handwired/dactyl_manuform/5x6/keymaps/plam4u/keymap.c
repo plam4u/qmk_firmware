@@ -91,6 +91,7 @@ enum custom_keycodes {
 
 // Miscellaneous
 #define CLIPBRD HYPR(KC_C)
+#define SLCTALL G(KC_A)
 #define CUT     G(KC_X)
 #define COPY    G(KC_C)
 #define PASTE   G(KC_V)
@@ -211,7 +212,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_NUMPAD] = LAYOUT_5x6(
     SS_ASD , _______, _______, _______, _______, _______,        _______, _______, _______, _______, _______, QK_BOOT,
     FOCUS  , APPQUIT, TABPREV, BACK   , FORWARD, TABNEXT,        KC_SLSH, KC_7   , KC_8   , KC_9   , KC_0   , _______,
-    ITERM  , ALFRED , ACCENT , APPPREV, APPNEXT, HIDEAPP,        KC_ASTR, KC_4   , KC_5   , KC_6   , KC_COLN, KC_UNDS,
+    ITERM  , SLCTALL, ACCENT , APPPREV, APPNEXT, HIDEAPP,        KC_ASTR, KC_4   , KC_5   , KC_6   , KC_COLN, KC_UNDS,
     APPWINS, UNDO   , CUT    , COPY   , PASTE  , CLIPBRD,        KC_EQL , KC_1   , KC_2   , KC_3   , KC_DOT , KC_COMM,
                       TG_SHLT, TG_SHAR,                                            KC_PLUS, KC_MINS,
                                         _______, TO_FPAD,        _______, _______,
