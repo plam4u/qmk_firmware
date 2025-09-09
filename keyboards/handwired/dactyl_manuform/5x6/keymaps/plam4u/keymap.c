@@ -288,8 +288,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_L_SH_ARROW] = LAYOUT_5x6(
     TO_QWER, _______, _______, _______, _______, _______,        _______, _______, _______, _______, _______, _______,
-    _______, _______, PB_10  , KC_UP  , KC_MPLY, _______,        _______, _______, _______, _______, _______, _______,
-    _______, _______, KC_LEFT, KC_DOWN, KC_RGHT, _______,        _______, _______, _______, _______, _______, _______,
+    _______, _______, PB_10  , _______, KC_MPLY, _______,        _______, _______, _______, _______, _______, _______,
+    _______, _______, KC_LEFT, KC_UP  , KC_DOWN, KC_RGHT,        _______, _______, _______, _______, _______, _______,
     _______, _______, KC_BSPC, KC_ENT , KC_DEL , _______,        _______, _______, _______, _______, _______, _______,
                       _______, _______,                                   _______, _______,
                                         _______, _______,        _______, _______,
@@ -364,6 +364,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                     unregister_code(KC_LCMD);
                 }
                 layer_clear(); // reset layers for predictable behavior
+                clear_all_mods(); // clear mods as I intuitively keep pressing ESC to clear them
             }
             break;
 
