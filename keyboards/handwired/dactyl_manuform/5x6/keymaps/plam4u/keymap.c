@@ -369,9 +369,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             break;
 
         case LT_AR_B:
-            if (!record->event.pressed) {
-                layer_clear(); // reset layers for predictable behavior
-            }
+            // if (!record->event.pressed) {
+            //     layer_clear(); // reset layers for predictable behavior
+            // }
             break;
 
         case APPPREV:
