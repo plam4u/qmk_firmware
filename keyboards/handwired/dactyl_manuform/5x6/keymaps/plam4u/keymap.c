@@ -199,7 +199,7 @@ combo_t key_combos[] = {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_BASE] = LAYOUT_5x6(
-    _______, OS_LCTL, OS_LSFT, OS_LALT, OS_LGUI, CLR_MOD,        TO_QWER, OS_LGUI, OS_LALT, OS_LSFT, OS_LCTL, TO_GAME,
+    ACCENT , OS_LCTL, OS_LSFT, OS_LALT, OS_LGUI, CLR_MOD,        TO_QWER, OS_LGUI, OS_LALT, OS_LSFT, OS_LCTL, TO_GAME,
     ENT_HPR, KC_Q   , KC_W   , KC_E   , KC_R   , KC_T   ,        KC_Y   , KC_U   , KC_I   , KC_O   , KC_P   , KC_COLN,
     ESC_MEH, KC_A   , KC_S   , KC_D   , KC_F   , KC_G   ,        KC_H   , KC_J   , KC_K   , KC_L   , TD_CLN , KC_QUOT,
     ALT_TLD, CTL_Z  , KC_X   , KC_C   , KC_V   , KC_B   ,        KC_N   , KC_M   , KC_COMM, KC_DOT , CTL_SL , ALT_BSL,
@@ -212,7 +212,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_NUMPAD] = LAYOUT_5x6(
     SS_ASD , _______, _______, _______, _______, _______,        _______, _______, _______, _______, _______, QK_BOOT,
     FOCUS  , APPQUIT, TABPREV, BACK   , FORWARD, TABNEXT,        KC_SLSH, KC_7   , KC_8   , KC_9   , KC_0   , _______,
-    ITERM  , SLCTALL, ACCENT , APPPREV, APPNEXT, HIDEAPP,        KC_ASTR, KC_4   , KC_5   , KC_6   , KC_COLN, KC_UNDS,
+    ITERM  , OS_LCTL, OS_LSFT, OS_LALT, OS_LGUI, CLR_MOD,        KC_ASTR, KC_4   , KC_5   , KC_6   , KC_COLN, KC_UNDS,
     APPWINS, UNDO   , CUT    , COPY   , PASTE  , CLIPBRD,        KC_EQL , KC_1   , KC_2   , KC_3   , KC_DOT , KC_COMM,
                       TG_SHLT, TG_SHAR,                                            KC_PLUS, KC_MINS,
                                         _______, TO_FPAD,        _______, _______,
@@ -223,8 +223,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_FNUMPAD] = LAYOUT_5x6(
     _______, _______, _______, _______, _______, _______,        _______, _______, _______, _______, _______, _______,
     _______, APP01  , APP02  , APP03  , APP04  , APP05  ,        _______, KC_F7  , KC_F8  , KC_F9  , KC_F10 , _______,
-    _______, APP06  , APP07  , APP08  , APP09  , APP10  ,        _______, KC_F4  , KC_F5  , KC_F6  , KC_F11 , _______,
-    _______, _______, _______, _______, _______, _______,        _______, KC_F1  , KC_F2  , KC_F3  , KC_F12 , _______,
+    _______, APP06  , APP07  , APPPREV, APPNEXT, HIDEAPP,        _______, KC_F4  , KC_F5  , KC_F6  , KC_F11 , _______,
+    _______, REDO   , _______, APP08  , APP09  , APP10  ,        _______, KC_F1  , KC_F2  , KC_F3  , KC_F12 , _______,
                       _______, _______,                                            _______, _______,
                                         _______, _______,        _______, _______,
                                         _______, _______,        _______, _______,
@@ -233,7 +233,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_ARROWS] = LAYOUT_5x6(
     _______, _______, _______, _______, _______, _______,        _______, _______, _______, _______, _______, _______,
-    KC_QUES, KC_PERC, KC_AT  , KC_LCBR, KC_RCBR, KC_CIRC,        SG_LBRC, KC_MPLY, KC_MNXT, SG_RBRC, KC_VOLU, _______,
+    KC_QUES, KC_PERC, KC_AT  , KC_LCBR, KC_RCBR, KC_CIRC,        TABPREV, KC_MPLY, KC_MNXT, TABNEXT, KC_VOLU, _______,
     KC_EXLM, KC_UNDS, KC_AMPR, KC_LPRN, KC_RPRN, KC_DLR ,        KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT, KC_VOLD, _______,
     KC_TILD, KC_HASH, KC_PIPE, KC_LBRC, KC_RBRC, KC_ASTR,        _______, KC_BSPC, KC_ENT , KC_DEL , KC_TAB , _______,
                       _______, _______,                                            _______, _______,
@@ -364,7 +364,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                     unregister_code(KC_LCMD);
                 }
                 layer_clear(); // reset layers for predictable behavior
-                clear_all_mods(); // clear mods as I intuitively keep pressing ESC to clear them
+                // clear_all_mods(); // clear mods as I intuitively keep pressing ESC to clear them
             }
             break;
 
